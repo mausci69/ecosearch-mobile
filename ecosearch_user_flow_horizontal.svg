@@ -1,0 +1,32 @@
+<svg width="1100" height="270" xmlns="http://www.w3.org/2000/svg" style="font-family:Arial,sans-serif">
+  <rect x="30" y="100" width="180" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <text x="120" y="130" text-anchor="middle" font-size="17">User submits query</text>
+
+  <rect x="250" y="100" width="280" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <text x="390" y="130" text-anchor="middle" font-size="17">System retrieves &amp; reranks</text>
+
+  <rect x="570" y="100" width="320" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <text x="730" y="130" text-anchor="middle" font-size="17">User reviews the top-1 chunk</text>
+
+  <rect x="570" y="200" width="140" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <rect x="730" y="200" width="140" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <rect x="890" y="200" width="180" height="50" rx="10" fill="#fff" stroke="#000" stroke-width="2"/>
+
+  <text x="640" y="230" text-anchor="middle" font-size="15">Answer from chunk</text>
+  <text x="800" y="230" text-anchor="middle" font-size="15">Fallback answer</text>
+  <text x="980" y="230" text-anchor="middle" font-size="15">Neither is sufficient</text>
+
+  <!-- Arrows -->
+  <line x1="210" y1="125" x2="250" y2="125" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="530" y1="125" x2="570" y2="125" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="890" y1="125" x2="960" y2="200" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="730" y1="150" x2="640" y2="200" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="730" y1="150" x2="800" y2="200" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="730" y1="150" x2="980" y2="200" stroke="#000" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000"/>
+    </marker>
+  </defs>
+</svg>

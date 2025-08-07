@@ -1,0 +1,54 @@
+Retrieval-Augmented Generation (RAG)
+Retrieval-Augmented Generation (RAG) is a method that enables large language models to access and use external documents during response generation. Unlike typical language models, which rely solely on internal parameters trained on pre-existing data, RAG allows models to integrate freshly retrieved context at query time.
+
+The RAG approach first retrieves relevant passages from a knowledge base or vector database using similarity search or keyword-based retrieval. These passages are then appended to the user’s query, creating an augmented prompt. The language model generates its response based on both the query and the retrieved material.
+
+This architecture helps reduce hallucinations and enables responses that reflect the latest or proprietary information. Additionally, many implementations support source attribution, where citations are included to make outputs verifiable.
+
+Origins and Evolution
+The term “Retrieval-Augmented Generation” was introduced in a 2020 research paper by Meta AI researchers. The architecture combined a sequence-to-sequence neural generation model with a dense retrieval index of Wikipedia passages. This hybrid design achieved state-of-the-art performance on open-domain question answering benchmarks.
+
+Since then, RAG has grown into a framework used in many applications demanding high factual accuracy and grounding—such as enterprise question answering, customer support, legal assistants, and more.
+
+Core Components of RAG
+1. Indexing:
+Documents are split into chunks and converted into embeddings, which are vector representations. These chunk vectors are stored in a vector database, enabling semantic similarity search. RAG supports unstructured text, structured data, and knowledge graphs.
+
+2. Retrieval:
+Given a user query, the system computes an embedding and retrieves a set of top similar chunks. Some advanced versions include query rewriting or reranking to refine relevance.
+
+3. Augmentation:
+The retrieved passages are combined with the original query (and possibly previous conversation history) and fed into the language model. This can be done in a single pass or iteratively.
+
+4. Generation:
+The language model generates a response conditioned on both the original query and the supplemental context. Outputs often include footnotes or inline citations pointing to retrieved passages.
+
+Benefits of RAG
+Factuality and grounding: Reduces hallucinations by anchoring responses in actual source documents.
+
+Real-world relevance: Supports up-to-date and custom domain knowledge without retraining models.
+
+Source transparency: Users can verify information via included citations.
+
+Efficiency: Avoids expensive retraining by decoupling content from model parameters.
+
+Limitations and Challenges
+Potential misinterpretation of retrieved content—language models may still hallucinate around the provided context.
+
+Security and compliance risks when centralising sensitive internal data in vector stores.
+
+Retrieval bias or incompleteness if relevant documents are not in the index or retrieved appropriately.
+
+Advanced RAG Variants
+Graph-RAG and Structured RAG: Uses structured data such as knowledge graphs and relational tables for better logical reasoning.
+
+Hybrid search: Combines keyword-based retrieval with dense embedding-based retrieval to balance precision and recall.
+
+Dynamic or multi-step augmentation: Enables retrieval at multiple stages, such as within generation loops or with query refinement.
+
+Real-World Adoption
+Major technology companies have integrated RAG into their AI solutions for enterprise customer support, virtual assistants, and knowledge-based chatbots. Executives have praised RAG for transforming chatbots into more reliable research assistants.
+
+The Future of RAG
+RAG is evolving towards better interpretability and reasoning, dynamic retrieval strategies, improved reranking models, and closer integration with knowledge graphs, memory mechanisms, and symbolic systems. Architectures are also being designed for security, auditability, and modular enterprise deployment.
+

@@ -1,0 +1,152 @@
+[
+  {
+    "question": "What is an artificial neural network?"
+  },
+  {
+    "question": "What does a circular node in a neural network represent?"
+  },
+  {
+    "question": "What does an activation function do in a neural network?"
+  },
+  {
+    "question": "How is the strength of a neural network connection adjusted?"
+  },
+  {
+    "question": "What does it mean if a neural network is 'deep'?"
+  },
+  {
+    "question": "What is the main purpose of training a neural network?"
+  },
+  {
+    "question": "Which algorithm is often used to train neural networks?"
+  },
+  {
+    "question": "Who proposed the idea of Hebbian learning?"
+  },
+  {
+    "question": "Who described the perceptron, one of the first neural networks?"
+  },
+  {
+    "question": "What was a main limitation of the earliest perceptrons?"
+  },
+  {
+    "question": "What is backpropagation used for in neural networks?"
+  },
+  {
+    "question": "What is a convolutional neural network (CNN) especially useful for?"
+  },
+  {
+    "question": "What is max pooling in CNNs?"
+  },
+  {
+    "question": "What problem did the introduction of LSTM solve?"
+  },
+  {
+    "question": "What do artificial neurons mimic?"
+  },
+  {
+    "question": "What does a 'weight' do in a neural network?"
+  },
+  {
+    "question": "What is the main role of the input layer in a neural network?"
+  },
+  {
+    "question": "What are the outputs of the final output neurons used for?"
+  },
+  {
+    "question": "What does 'learning rate' mean in neural networks?"
+  },
+  {
+    "question": "What is supervised learning in the context of neural networks?"
+  },
+  {
+    "question": "What does unsupervised learning aim to do?"
+  },
+  {
+    "question": "What is reinforcement learning in neural networks?"
+  },
+  {
+    "question": "What is a hyperparameter in neural networks?"
+  },
+  {
+    "question": "What is the universal approximation theorem?"
+  },
+  {
+    "question": "What does over-training mean in the context of neural networks?"
+  },
+  {
+    "question": "What is regularization used for in neural networks?"
+  },
+  {
+    "question": "What is meant by the 'cost function' in neural networks?"
+  },
+  {
+    "question": "What is meant by 'momentum' in learning algorithms?"
+  },
+  {
+    "question": "What is batch learning in neural networks?"
+  },
+  {
+    "question": "What is a feedforward network?"
+  },
+  {
+    "question": "What is a recurrent neural network (RNN)?"
+  },
+  {
+    "question": "What are convolutional neural networks particularly successful in?"
+  },
+  {
+    "question": "What is a generative adversarial network (GAN)?"
+  },
+  {
+    "question": "What is the main idea behind the Transformer architecture?"
+  },
+  {
+    "question": "What is the function of the output layer in a neural network?"
+  },
+  {
+    "question": "What does a 'bias term' do in a neuron?"
+  },
+  {
+    "question": "What does 'fully connected' mean between layers?"
+  },
+  {
+    "question": "What is the main application of neural architecture search (NAS)?"
+  },
+  {
+    "question": "What is a main application of ANNs in finance?"
+  },
+  {
+    "question": "Name one way ANNs are used in medicine."
+  },
+  {
+    "question": "What is the main criticism of neural networks in robotics?"
+  },
+  {
+    "question": "What is meant by 'black-box' nature in neural networks?"
+  },
+  {
+    "question": "What is meant by dataset bias in neural networks?"
+  },
+  {
+    "question": "What are two main types of learning in neural networks?"
+  },
+  {
+    "question": "What is a main use of ANNs in natural language processing?"
+  },
+  {
+    "question": "What is meant by generalization in neural networks?"
+  },
+  {
+    "question": "What does a softmax activation function provide?"
+  },
+  {
+    "question": "What does a pooling layer do in a neural network?"
+  },
+  {
+    "question": "What is neuroevolution?"
+  },
+  {
+    "question": "Name one application area where ANNs are used outside traditional computing."
+  }
+]

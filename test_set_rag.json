@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What does RAG stand for?"
+  },
+  {
+    "question": "What is the main purpose of Retrieval-Augmented Generation?"
+  },
+  {
+    "question": "How does RAG reduce hallucinations in language model responses?"
+  },
+  {
+    "question": "What is the first step in the RAG workflow?"
+  },
+  {
+    "question": "Which company's researchers introduced the term Retrieval-Augmented Generation in 2020?"
+  },
+  {
+    "question": "What is stored in the vector database in RAG systems?"
+  },
+  {
+    "question": "How does RAG support up-to-date information without retraining models?"
+  },
+  {
+    "question": "What are some real-world applications of RAG?"
+  },
+  {
+    "question": "Name one benefit of RAG."
+  },
+  {
+    "question": "What is a potential limitation or challenge of using RAG?"
+  },
+  {
+    "question": "What does hybrid search combine in advanced RAG variants?"
+  },
+  {
+    "question": "What is one direction for the future development of RAG systems?"
+  }
+]

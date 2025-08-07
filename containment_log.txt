@@ -1,0 +1,152 @@
+Q: What is question answering in computer science?
+Top1 idx: 0
+Top1 chunk: Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language...
+GPT says: yes
+Top3 indices: [0, 7, 11]
+GPT Top3 Match: 1
+---
+Q: What are common data sources used in question answering?
+Top1 idx: 1
+Top1 chunk: [1]
+Overview
+A question-answering implementation, usually a computer program, may construct its answers by querying a st...
+GPT says: yes
+Top3 indices: [1, 43, 42]
+GPT Top3 Match: 1
+---
+Q: What types of questions can QA systems handle?
+Top1 idx: 16
+Top1 chunk: There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hyb...
+GPT says: no.
+Top3 indices: [16, 41, 40]
+GPT Top3 Match: 0
+---
+Q: What is closed-book question answering?
+Top1 idx: 5
+Top1 chunk: An example of such a question is "What did Albert Einstein win the Nobel Prize for?" after an article about this subject...
+GPT says: yes.
+Top3 indices: [5, 7, 6]
+GPT Top3 Match: 1
+---
+Q: How does closed-domain QA differ from open-domain QA?
+Top1 idx: 6
+Top1 chunk: •	Closed-book question answering is when a system has memorized some facts during training and can answer questions with...
+GPT says: no.
+Top3 indices: [6, 9, 7]
+GPT Top3 Match: 1
+---
+Q: What are the main technical types of QA systems?
+Top1 idx: 16
+Top1 chunk: There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hyb...
+GPT says: yes
+Top3 indices: [16, 41, 40]
+GPT Top3 Match: 1
+---
+Q: What was the LUNAR system designed to do?
+Top1 idx: 23
+Top1 chunk: Both question answering systems were very effective in their chosen domains. LUNAR was demonstrated at a lunar science c...
+GPT says: no.
+Top3 indices: [23, 20, 22]
+GPT Top3 Match: 1
+---
+Q: Who developed SHRDLU?
+Top1 idx: 28
+Top1 chunk: SHRDLU was a successful question-answering program developed by Terry Winograd in the late 1960s and early 1970s. It sim...
+GPT says: yes.
+Top3 indices: [28, 35, 36]
+GPT Top3 Match: 1
+---
+Q: What was the Unix Consultant system?
+Top1 idx: 34
+Top1 chunk: The 1970s and 1980s saw the development of comprehensive theories in computational linguistics, which led to the develop...
+GPT says: yes.
+Top3 indices: [34, 35, 36]
+GPT Top3 Match: 1
+---
+Q: What is the role of a question classifier?
+Top1 idx: 56
+Top1 chunk: It then transforms this input sentence into a query in its logical form. Accepting natural language questions makes the ...
+GPT says: yes.
+Top3 indices: [56, 0, 2]
+GPT Top3 Match: 1
+---
+Q: How does a retriever-reader architecture work?
+Top1 idx: 45
+Top1 chunk: The retriever is aimed at retrieving relevant documents related to a given question, while the reader is used to infer t...
+GPT says: no.
+Top3 indices: [45, 43, 42]
+GPT Top3 Match: 1
+---
+Q: What benefits does data redundancy offer in QA?
+Top1 idx: 49
+Top1 chunk: Data redundancy in massive collections, such as the web, means that nuggets of information are likely to be phrased in m...
+GPT says: yes
+Top3 indices: [49, 48, 41]
+GPT Top3 Match: 1
+---
+Q: What is MathQA?
+Top1 idx: 76
+Top1 chunk: In the previous example, the expected output answer is "1st Oct."
+Mathematical question answering
+An open-source, math-a...
+GPT says: yes
+Top3 indices: [76, 74, 80]
+GPT Top3 Match: 1
+---
+Q: What is the ARQMath Task?
+Top1 idx: 82
+Top1 chunk: One possible approach is to perform supervised annotation via Entity Linking. The "ARQMath Task" at CLEF 2020[17] was la...
+GPT says: yes.
+Top3 indices: [82, 76, 80]
+GPT Top3 Match: 1
+---
+Q: What are the applications of QA systems?
+Top1 idx: 41
+Top1 chunk: Specialized natural-language question answering systems have been developed, such as EAGLi for health and life scientist...
+GPT says: yes
+Top3 indices: [41, 40, 16]
+GPT Top3 Match: 1
+---
+Q: What is answer type detection in QA?
+Top1 idx: 70
+Top1 chunk: [clarification needed]
+A vector space model can classify the candidate answers. Check[who?] if the answer is of the corr...
+GPT says: no.
+Top3 indices: [70, 60, 62]
+GPT Top3 Match: 1
+---
+Q: What is the function of a named-entity recogniser in QA?
+Top1 idx: 67
+Top1 chunk: A tagger and NP/Verb Group chunker can verify whether the correct entities and relations are mentioned in the found docu...
+GPT says: yes.
+Top3 indices: [67, 41, 61]
+GPT Top3 Match: 1
+---
+Q: How does a vector space model help in QA?
+Top1 idx: 69
+Top1 chunk: Only the relevant paragraphs are selected for ranking. [clarification needed]
+A vector space model can classify the cand...
+GPT says: no.
+Top3 indices: [69, 40, 68]
+GPT Top3 Match: 0
+---
+Q: What role did Watson play in QA history?
+Top1 idx: 40
+Top1 chunk: The systems developed in the UC and LILOG projects never went past the stage of simple demonstrations, but they helped t...
+GPT says: no.
+Top3 indices: [40, 41, 31]
+GPT Top3 Match: 0
+---
+Q: What are current research topics in QA?
+Top1 idx: 40
+Top1 chunk: The systems developed in the UC and LILOG projects never went past the stage of simple demonstrations, but they helped t...
+GPT says: no.
+Top3 indices: [40, 95, 94]
+GPT Top3 Match: 1
+---

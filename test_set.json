@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What is question answering in computer science?"
+  },
+  {
+    "question": "What are common data sources used in question answering?"
+  },
+  {
+    "question": "What types of questions can QA systems handle?"
+  },
+  {
+    "question": "What is closed-book question answering?"
+  },
+  {
+    "question": "How does closed-domain QA differ from open-domain QA?"
+  },
+  {
+    "question": "What are the main technical types of QA systems?"
+  },
+  {
+    "question": "What was the LUNAR system designed to do?"
+  },
+  {
+    "question": "Who developed SHRDLU?"
+  },
+  {
+    "question": "What was the Unix Consultant system?"
+  },
+  {
+    "question": "What is the role of a question classifier?"
+  },
+  {
+    "question": "How does a retriever-reader architecture work?"
+  },
+  {
+    "question": "What benefits does data redundancy offer in QA?"
+  },
+  {
+    "question": "What is MathQA?"
+  },
+  {
+    "question": "What is the ARQMath Task?"
+  },
+  {
+    "question": "What are the applications of QA systems?"
+  },
+  {
+    "question": "What is answer type detection in QA?"
+  },
+  {
+    "question": "What is the function of a named-entity recogniser in QA?"
+  },
+  {
+    "question": "How does a vector space model help in QA?"
+  },
+  {
+    "question": "What role did Watson play in QA history?"
+  },
+  {
+    "question": "What are current research topics in QA?"
+  }
+]

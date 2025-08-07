@@ -1,0 +1,140 @@
+Q: What is question answering in computer science?
+Generated Answer: Question answering in computer science involves dealing with questions under a specific domain, such as medicine or automotive maintenance, and can utilize domain-specific knowledge often formalized in ontologies. It may also refer to situations where only a limited type of questions, such as those asking for descriptive rather than procedural information, are accepted.
+Oracle Span: This is similar to humans taking closed-book exams. • Closed-domain question answering deals with questions under a specific domain (for example, medicine or automotive maintenance) and can exploit domain-specific knowledge frequently formalized in ontologies. Alternatively, "closed-domain" might refer to a situation where only a limited type of questions are accepted, such as questions asking for descriptive rather than procedural information.
+Chunk Sentence IDs: [8, 9, 10]
+Oracle Sentence IDs: [8, 9, 10]
+Overlap: 100.00% (3/3)
+---
+Q: What are common data sources used in question answering?
+Generated Answer: Common data sources used in question answering systems include a local collection of reference texts, internal organization documents and web pages, compiled newswire reports, a set of Wikipedia pages, and a subset of World Wide Web pages.
+Oracle Span: Some examples of natural language document collections used for question answering systems include: • a local[clarification needed] collection of reference texts • internal organization[ambiguous] documents and web pages • compiled newswire reports • a set of Wikipedia pages[2] • a subset of World Wide Web pages Types of question answering[edit] Question-answering research attempts to develop ways of answering a wide range of question types, including fact, list, definition, how, why, hypothetical, semantically constrained, and cross-lingual questions.
+Chunk Sentence IDs: [3, 4, 5]
+Oracle Sentence IDs: [3]
+Overlap: 100.00% (1/1)
+---
+Q: What types of questions can QA systems handle?
+Generated Answer: The chunk does not specify the types of questions that QA systems can handle. It only describes different types of QA systems, such as rule-based, statistical, and hybrid systems, and their methods for determining answers.
+Oracle Span: Rule-based systems use a set of rules to determine the correct answer to a question. Statistical systems use statistical methods to find the most likely answer to a question. Hybrid systems aim to leverage the strengths of both rule-based and statistical approaches.
+Chunk Sentence IDs: [17, 18, 19]
+Oracle Sentence IDs: [18, 19]
+Overlap: 100.00% (2/2)
+---
+Q: What is closed-book question answering?
+Generated Answer: Closed-book question answering is when a system has memorized some facts during training and can answer questions without explicitly being given a context.
+Oracle Span: • Closed-book question answering is when a system has memorized some facts during training and can answer questions without explicitly being given a context.
+Chunk Sentence IDs: [5, 6, 7]
+Oracle Sentence IDs: [7]
+Overlap: 100.00% (1/1)
+---
+Q: How does closed-domain QA differ from open-domain QA?
+Generated Answer: Closed-domain QA deals with questions under a specific domain, such as medicine or automotive maintenance, and can exploit domain-specific knowledge often formalized in ontologies.
+Oracle Span: • Closed-domain question answering deals with questions under a specific domain (for example, medicine or automotive maintenance) and can exploit domain-specific knowledge frequently formalized in ontologies. • Open-domain question answering, in contrast, aims to answer questions about an unrestricted range of topics and relies heavily on retrieving relevant information from vast datasets.
+Chunk Sentence IDs: [7, 8, 9]
+Oracle Sentence IDs: [9]
+Overlap: 100.00% (1/1)
+---
+Q: What are the main technical types of QA systems?
+Generated Answer: The main technical types of QA systems are rule-based systems, statistical systems, and hybrid systems. Rule-based systems use a set of rules to determine the correct answer to a question, while statistical systems use statistical methods to find the most likely answer.
+Oracle Span: Rule-based systems use a set of rules to determine the correct answer to a question. Statistical systems use statistical methods to find the most likely answer to a question. Hybrid systems combine elements of both rule-based and statistical systems.
+Chunk Sentence IDs: [17, 18, 19]
+Oracle Sentence IDs: [18, 19]
+Overlap: 100.00% (2/2)
+---
+Q: What was the LUNAR system designed to do?
+Generated Answer: The LUNAR system was designed to answer questions in its domain, as demonstrated at a lunar science convention in 1971.
+Oracle Span: Both question answering systems were very effective in their chosen domains. LUNAR was demonstrated at a lunar science convention in 1971 and it was able to answer 90% of the questions in its domain that were posed by people untrained on the system. Further restricted-domain question answering systems were developed in the following years.
+Chunk Sentence IDs: [24, 25, 26]
+Oracle Sentence IDs: [24, 25, 26]
+Overlap: 100.00% (3/3)
+---
+Q: Who developed SHRDLU?
+Generated Answer: SHRDLU was developed by Terry Winograd.
+Oracle Span: SHRDLU was a successful question-answering program developed by Terry Winograd in the late 1960s and early 1970s. It simulated the operation of a robot in a toy world (the "blocks world"), and it offered the possibility of asking the robot questions about the state of the world. The strength of this system was the choice of a very specific domain and a very simple world with rules of physics that were easy to encode in a computer program.
+Chunk Sentence IDs: [29, 30, 31]
+Oracle Sentence IDs: [29, 30, 31]
+Overlap: 100.00% (3/3)
+---
+Q: What was the Unix Consultant system?
+Generated Answer: The Unix Consultant (UC) was a system developed by Robert Wilensky at U.C. Berkeley in the late 1980s that answered questions pertaining to the Unix operating system.
+Oracle Span: I'm sorry, but there don't appear to be three consecutive sentences in the text you provided that describe the Unix Consultant system. Would you like to provide more text or select fewer sentences?
+Chunk Sentence IDs: [37, 38, 39]
+Oracle Sentence IDs: []
+Overlap: 0.00% (0/0)
+---
+Q: What is the role of a question classifier?
+Generated Answer: The role of a question classifier in question-answering systems is to determine the type of question and the type of answer.
+Oracle Span: As of 2001, question-answering systems typically included a question classifier module that determined the type of question and the type of answer. Different types of question-answering systems employ different architectures.
+Chunk Sentence IDs: [45, 46, 47]
+Oracle Sentence IDs: [46, 47]
+Overlap: 100.00% (2/2)
+---
+Q: How does a retriever-reader architecture work?
+Generated Answer: A retriever-reader architecture works by having a retriever component that retrieves relevant documents related to a given question, and a reader component that infers the answer from these retrieved documents.
+Oracle Span: The retriever is aimed at retrieving relevant documents related to a given question, while the reader is used to infer the answer from the retrieved documents. Systems such as GPT-3, T5,[8] and BART[9] use an end-to-end[jargon] architecture in which a transformer-based[jargon] architecture stores large-scale textual data in the underlying parameters. Such models can answer questions without accessing any external knowledge sources.
+Chunk Sentence IDs: [49, 50, 51]
+Oracle Sentence IDs: [49, 50, 51]
+Overlap: 100.00% (3/3)
+---
+Q: What benefits does data redundancy offer in QA?
+Generated Answer: Data redundancy in QA offers two main benefits: 1) It reduces the need for complex NLP techniques, as the right information is likely to appear in many forms, making it easier for the system to understand the text. 2) It helps filter correct answers from false positives, as correct answers tend to appear more frequently in the corpus than incorrect ones.
+Oracle Span: Data redundancy in massive collections, such as the web, means that nuggets of information are likely to be phrased in many different ways in differing contexts and documents, leading to two benefits: If the right information appears in many forms, the question answering system needs to perform fewer complex NLP techniques to understand the text. Correct answers can be filtered from false positives because the system can rely on versions of the correct answer appearing more times in the corpus than incorrect ones.
+Chunk Sentence IDs: [54, 55, 56]
+Oracle Sentence IDs: [54, 55]
+Overlap: 100.00% (2/2)
+---
+Q: What is MathQA?
+Generated Answer: MathQA is an open-source, math-aware question answering system based on Ask Platypus and Wikidata, published in 2018. It takes an English or Hindi natural language question as input and returns a mathematical formula retrieved from Wikidata as a succinct answer, translated into a computable form that allows the user to insert values for the variables. The system retrieves names and values of variables and common constants from Wikidata if those are available.
+Oracle Span: Mathematical question answering An open-source, math-aware, question answering system called MathQA, based on Ask Platypus and Wikidata, was published in 2018. MathQA takes an English or Hindi natural language question as input and returns a mathematical formula retrieved from Wikidata as a succinct answer, translated into a computable form that allows the user to insert values for the variables. The system retrieves names and values of variables and common constants from Wikidata if those are available.
+Chunk Sentence IDs: [81, 82, 83]
+Oracle Sentence IDs: [82, 83]
+Overlap: 100.00% (2/2)
+---
+Q: What is the ARQMath Task?
+Generated Answer: The ARQMath Task at CLEF 2020 was launched to address the problem of linking newly posted questions from the platform Math Stack Exchange to existing ones that were already answered by the community.
+Oracle Span: The "ARQMath Task" at CLEF 2020[17] was launched to address the problem of linking newly posted questions from the platform Math Stack Exchange to existing ones that were already answered by the community.
+Chunk Sentence IDs: [87, 88, 89]
+Oracle Sentence IDs: [89]
+Overlap: 100.00% (1/1)
+---
+Q: What are the applications of QA systems?
+Generated Answer: QA systems are used in applications such as fact-checking, customer service, technical support, market research, and generating reports or conducting research.
+Oracle Span: QA systems are used in a variety of applications, including • Fact-checking if a fact is verified, by posing a question like: is fact X true or false? • customer service, • technical support, • market research, • generating reports or conducting research.
+Chunk Sentence IDs: [43, 44, 45]
+Oracle Sentence IDs: [44, 45]
+Overlap: 100.00% (2/2)
+---
+Q: What is answer type detection in QA?
+Generated Answer: Answer type detection in QA involves identifying the type of answer expected based on the question. Words like "Who", "Where", "When", or "How many" can indicate that the answer should be of type "Person", "Location", "Date", or "Number", respectively. Techniques such as POS (part-of-speech) tagging and syntactic parsing can also be used to determine the answer type. For example, if the subject is "Chinese National Day" and the adverbial modifier is "when", the answer type would be "Date".
+Oracle Span: In some cases, words clearly indicate the question type, e.g., "Who", "Where", "When", or "How many"—these words might suggest to the system that the answers should be of type "Person", "Location", "Date", or "Number", respectively. POS (part-of-speech) tagging and syntactic parsing techniques can also determine the answer type. In the example above, the subject is "Chinese National Day", the predicate is "is" and the adverbial modifier is "when", therefore the answer type is "Date".
+Chunk Sentence IDs: [65, 66, 67]
+Oracle Sentence IDs: [65, 66, 67]
+Overlap: 100.00% (3/3)
+---
+Q: What is the function of a named-entity recogniser in QA?
+Generated Answer: A named-entity recogniser in QA finds relevant "Person" and "Location" names from the retrieved documents for questions such as "Who" or "Where".
+Oracle Span: A tagger and NP/Verb Group chunker can verify whether the correct entities and relations are mentioned in the found documents. For questions such as "Who" or "Where", a named-entity recogniser finds relevant "Person" and "Location" names from the retrieved documents. Only the relevant paragraphs are selected for ranking.
+Chunk Sentence IDs: [72, 73, 74]
+Oracle Sentence IDs: [72, 73, 74]
+Overlap: 100.00% (3/3)
+---
+Q: How does a vector space model help in QA?
+Generated Answer: A vector space model helps in QA by classifying candidate answers and checking if the answer is of the correct type as determined in the question type analysis stage.
+Oracle Span: I'm sorry, but the provided text does not contain a set of three consecutive sentences that answer the question about how a vector space model helps in QA. If you have more context or another text excerpt, I would be happy to assist further.
+Chunk Sentence IDs: [75, 76, 77]
+Oracle Sentence IDs: []
+Overlap: 0.00% (0/0)
+---
+Q: What role did Watson play in QA history?
+Generated Answer: The chunk does not provide information about Watson's role in QA history.
+Oracle Span: I apologize, but the text you provided doesn't contain enough information about the role Watson played in QA history. Watson is IBM's AI system, known for winning the Jeopardy! game show, but without more context or details in the text, I can't provide an accurate selection related to Watson's specific role in QA history. Please provide more information or additional text.
+Chunk Sentence IDs: [43, 44, 45]
+Oracle Sentence IDs: []
+Overlap: 0.00% (0/0)
+---
+Q: What are current research topics in QA?
+Generated Answer: Current research topics in question answering (QA) include interactivity for clarification of questions or answers, answer reuse or caching, semantic parsing, answer presentation, knowledge representation and semantic entailment, social media analysis with QA systems, sentiment analysis, utilization of thematic roles, image captioning for visual question answering, and embodied question answering.
+Oracle Span: Progress Question answering systems have been extended in recent[may be outdated as of April 2023] years to encompass additional domains of knowledge[21] For example, systems have been developed to automatically answer temporal and geospatial questions, questions of definition and terminology, biographical questions, multilingual questions, and questions about the content of audio, images,[22] and video. [23] Current question answering research topics include:
+Chunk Sentence IDs: [101, 102, 103]
+Oracle Sentence IDs: [101]
+Overlap: 100.00% (1/1)
+---

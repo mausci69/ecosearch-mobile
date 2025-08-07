@@ -1,0 +1,108 @@
+question,oracle_sentence_ids,oracle_span,ecosearch_chunk_indices,ecosearch_chunk_text,overlap
+What is question answering in computer science?,[0],Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP) that is concerned with building systems that automatically answer questions that are posed by humans in a natural language.,"[0, 1, 2]","Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP) that is concerned with building systems that automatically answer questions that are posed by humans in a natural language. [1]
+Overview
+A question-answering implementation, usually a computer program, may construct its answers by querying a structured database of knowledge or information, usually a knowledge base. More commonly, question-answering systems can pull answers from an unstructured collection of natural language documents.",FULL
+What are common data sources used in question answering?,"[2, 3]","More commonly, question-answering systems can pull answers from an unstructured collection of natural language documents. Some examples of natural language document collections used for question answering systems include:
+	•	a local[clarification needed] collection of reference texts
+	•	internal organization[ambiguous] documents and web pages
+	•	compiled newswire reports
+	•	a set of Wikipedia pages[2]
+	•	a subset of World Wide Web pages
+Types of question answering[edit]
+Question-answering research attempts to develop ways of answering a wide range of question types, including fact, list, definition, how, why, hypothetical, semantically constrained, and cross-lingual questions.","[102, 103, 104]","[23] Current question answering research topics include:
+	•	interactivity—clarification of questions or answers[further explanation needed][24]
+	•	answer reuse or caching[25]
+	•	semantic parsing[26]
+	•	answer presentation[further explanation needed][27]
+	•	knowledge representation and semantic entailment[28]
+	•	social media analysis[further explanation needed] with question answering systems
+	•	sentiment analysis[29]
+	•	utilization of thematic roles[30]
+	•	Image captioning for visual question answering[22]
+	•	Embodied question answering[31]
+In 2011, Watson, a question answering computer system developed by IBM, competed in two exhibition matches of Jeopardy! against Brad Rutter and Ken Jennings, winning by a significant margin. [32] Facebook Research made their DrQA system[33] available under an open source license.",NONE
+What types of questions can QA systems handle?,"[3, 4]","Some examples of natural language document collections used for question answering systems include:
+	•	a local[clarification needed] collection of reference texts
+	•	internal organization[ambiguous] documents and web pages
+	•	compiled newswire reports
+	•	a set of Wikipedia pages[2]
+	•	a subset of World Wide Web pages
+Types of question answering[edit]
+Question-answering research attempts to develop ways of answering a wide range of question types, including fact, list, definition, how, why, hypothetical, semantically constrained, and cross-lingual questions. •	Answering questions related to an article in order to evaluate reading comprehension is one of the simpler form of question answering, since a given article is relatively short compared to the domains of other types of question-answering problems.","[16, 17, 18]","Another way to categorize question-answering systems is by the technical approach used. There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hybrid systems. Rule-based systems use a set of rules to determine the correct answer to a question.",NONE
+What is closed-book question answering?,"[7, 8]",•	Closed-book question answering is when a system has memorized some facts during training and can answer questions without explicitly being given a context. This is similar to humans taking closed-book exams.,"[7, 8, 9]","•	Closed-book question answering is when a system has memorized some facts during training and can answer questions without explicitly being given a context. This is similar to humans taking closed-book exams. •	Closed-domain question answering deals with questions under a specific domain (for example, medicine or automotive maintenance) and can exploit domain-specific knowledge frequently formalized in ontologies.",FULL
+How does closed-domain QA differ from open-domain QA?,"[9, 12]","•	Closed-domain question answering deals with questions under a specific domain (for example, medicine or automotive maintenance) and can exploit domain-specific knowledge frequently formalized in ontologies. [3]
+	•	Open-domain question answering deals with questions about nearly anything and can only rely on general ontologies and world knowledge.","[9, 10, 11]","•	Closed-domain question answering deals with questions under a specific domain (for example, medicine or automotive maintenance) and can exploit domain-specific knowledge frequently formalized in ontologies. Alternatively, ""closed-domain"" might refer to a situation where only a limited type of questions are accepted, such as questions asking for descriptive rather than procedural information. Question answering systems in the context of[vague] machine reading applications have also been constructed in the medical domain, for instance related to[vague] Alzheimer's disease.",PARTIAL
+What are the main technical types of QA systems?,"[17, 18, 19]","There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hybrid systems. Rule-based systems use a set of rules to determine the correct answer to a question. Statistical systems use statistical methods to find the most likely answer to a question.","[16, 17, 18]","Another way to categorize question-answering systems is by the technical approach used. There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hybrid systems. Rule-based systems use a set of rules to determine the correct answer to a question.",PARTIAL
+What was the LUNAR system designed to do?,"[23, 24]",LUNAR answered questions about the geological analysis of rocks returned by the Apollo Moon missions. Both question answering systems were very effective in their chosen domains.,"[21, 22, 23]","History
+Two early question answering systems were BASEBALL[4] and LUNAR. [5] BASEBALL answered questions about Major League Baseball over a period of one year[ambiguous]. LUNAR answered questions about the geological analysis of rocks returned by the Apollo Moon missions.",PARTIAL
+Who developed SHRDLU?,[29],SHRDLU was a successful question-answering program developed by Terry Winograd in the late 1960s and early 1970s.,"[29, 30, 31]","SHRDLU was a successful question-answering program developed by Terry Winograd in the late 1960s and early 1970s. It simulated the operation of a robot in a toy world (the ""blocks world""), and it offered the possibility of asking the robot questions about the state of the world. The strength of this system was the choice of a very specific domain and a very simple world with rules of physics that were easy to encode in a computer program.",FULL
+What was the Unix Consultant system?,"[37, 38, 39]","One example was the Unix Consultant (UC), developed by Robert Wilensky at U.C. Berkeley in the late 1980s. The system answered questions pertaining to the Unix operating system.","[37, 38, 39]","One example was the Unix Consultant (UC), developed by Robert Wilensky at U.C. Berkeley in the late 1980s. The system answered questions pertaining to the Unix operating system.",FULL
+What is the role of a question classifier?,"[46, 47]","Architecture[edit]
+As of 2001, question-answering systems typically included a question classifier module that determined the type of question and the type of answer. [7]
+Different types of question-answering systems employ different architectures.","[45, 46, 47]","•	customer service,
+	•	technical support,
+	•	market research,
+	•	generating reports or conducting research. Architecture[edit]
+As of 2001, question-answering systems typically included a question classifier module that determined the type of question and the type of answer. [7]
+Different types of question-answering systems employ different architectures.",FULL
+How does a retriever-reader architecture work?,"[48, 49]","For example, modern open-domain question answering systems may use a retriever-reader architecture. The retriever is aimed at retrieving relevant documents related to a given question, while the reader is used to infer the answer from the retrieved documents.","[49, 50, 51]","The retriever is aimed at retrieving relevant documents related to a given question, while the reader is used to infer the answer from the retrieved documents. Systems such as GPT-3, T5,[8] and BART[9] use an end-to-end[jargon] architecture in which a transformer-based[jargon] architecture stores large-scale textual data in the underlying parameters. Such models can answer questions without accessing any external knowledge sources.",PARTIAL
+What benefits does data redundancy offer in QA?,"[54, 55]","Data redundancy in massive collections, such as the web, means that nuggets of information are likely to be phrased in many different ways in differing contexts and documents,[10] leading to two benefits:
+	1	If the right information appears in many forms, the question answering system needs to perform fewer complex NLP techniques to understand the text. 2	Correct answers can be filtered from false positives because the system can rely on versions of the correct answer appearing more times in the corpus than incorrect ones.","[54, 55, 56]","Data redundancy in massive collections, such as the web, means that nuggets of information are likely to be phrased in many different ways in differing contexts and documents,[10] leading to two benefits:
+	1	If the right information appears in many forms, the question answering system needs to perform fewer complex NLP techniques to understand the text. 2	Correct answers can be filtered from false positives because the system can rely on versions of the correct answer appearing more times in the corpus than incorrect ones. Some question answering systems rely heavily on automated reasoning.",FULL
+What is MathQA?,"[81, 82, 83]","In the previous example, the expected output answer is ""1st Oct.""
+Mathematical question answering
+An open-source, math-aware, question answering system called MathQA, based on Ask Platypus and Wikidata, was published in 2018. [15] MathQA takes an English or Hindi natural language question as input and returns a mathematical formula retrieved from Wikidata as a succinct answer, translated into a computable form that allows the user to insert values for the variables. The system retrieves names and values of variables and common constants from Wikidata if those are available.","[80, 81, 82]","The answer is then translated by parsing into a compact and meaningful representation. In the previous example, the expected output answer is ""1st Oct.""
+Mathematical question answering
+An open-source, math-aware, question answering system called MathQA, based on Ask Platypus and Wikidata, was published in 2018. [15] MathQA takes an English or Hindi natural language question as input and returns a mathematical formula retrieved from Wikidata as a succinct answer, translated into a computable form that allows the user to insert values for the variables.",PARTIAL
+What is the ARQMath Task?,"[89, 90, 93]","The ""ARQMath Task"" at CLEF 2020[17] was launched to address the problem of linking newly posted questions from the platform Math Stack Exchange to existing ones that were already answered by the community. Providing hyperlinks to already answered, semantically related questions helps users to get answers earlier but is a challenging problem because semantic relatedness is not trivial. Task 1: ""Answer retrieval"" matching old post answers to newly posed questions, and Task 2: ""Formula retrieval"" matching old post formulae to new questions.","[89, 90, 91]","The ""ARQMath Task"" at CLEF 2020[17] was launched to address the problem of linking newly posted questions from the platform Math Stack Exchange to existing ones that were already answered by the community. Providing hyperlinks to already answered, semantically related questions helps users to get answers earlier but is a challenging problem because semantic relatedness is not trivial. [18] The lab was motivated by the fact that 20% of mathematical queries in general-purpose search engines are expressed as well-formed questions.",PARTIAL
+What are the applications of QA systems?,"[44, 45]","[6]
+Applications
+QA systems are used in a variety of applications, including
+	•	Fact-checking if a fact is verified, by posing a question like: is fact X true or false? •	customer service,
+	•	technical support,
+	•	market research,
+	•	generating reports or conducting research.","[16, 17, 18]","Another way to categorize question-answering systems is by the technical approach used. There are a number of different types of QA systems, including
+	•	rule-based systems,
+	•	statistical systems, and
+	•	hybrid systems. Rule-based systems use a set of rules to determine the correct answer to a question.",NONE
+What is answer type detection in QA?,"[63, 64, 65]","Assigning a question type to the question is a crucial task; the entire answer extraction process relies on finding the correct question type and hence the correct answer type. Keyword extraction is the first step in identifying the input question type. [14] In some cases, words clearly indicate the question type, e.g., ""Who"", ""Where"", ""When"", or ""How many""—these words might suggest to the system that the answers should be of type ""Person"", ""Location"", ""Date"", or ""Number"", respectively.","[63, 64, 65]","Assigning a question type to the question is a crucial task; the entire answer extraction process relies on finding the correct question type and hence the correct answer type. Keyword extraction is the first step in identifying the input question type. [14] In some cases, words clearly indicate the question type, e.g., ""Who"", ""Where"", ""When"", or ""How many""—these words might suggest to the system that the answers should be of type ""Person"", ""Location"", ""Date"", or ""Number"", respectively.",FULL
+What is the function of a named-entity recogniser in QA?,[73],"For questions such as ""Who"" or ""Where"", a named-entity recogniser finds relevant ""Person"" and ""Location"" names from the retrieved documents.","[71, 72, 73]","Once the system identifies the question type, it uses an information retrieval system to find a set of documents that contain the correct keywords. A tagger and NP/Verb Group chunker can verify whether the correct entities and relations are mentioned in the found documents. For questions such as ""Who"" or ""Where"", a named-entity recogniser finds relevant ""Person"" and ""Location"" names from the retrieved documents.",FULL
+How does a vector space model help in QA?,"[75, 76, 77]","[clarification needed]
+A vector space model can classify the candidate answers. Check[who?] if the answer is of the correct type as determined in the question type analysis stage.","[75, 76, 77]","[clarification needed]
+A vector space model can classify the candidate answers. Check[who?] if the answer is of the correct type as determined in the question type analysis stage.",FULL
+What role did Watson play in QA history?,"[103, 104]","against Brad Rutter and Ken Jennings, winning by a significant margin. [32] Facebook Research made their DrQA system[33] available under an open source license.","[0, 1, 2]","Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP) that is concerned with building systems that automatically answer questions that are posed by humans in a natural language. [1]
+Overview
+A question-answering implementation, usually a computer program, may construct its answers by querying a structured database of knowledge or information, usually a knowledge base. More commonly, question-answering systems can pull answers from an unstructured collection of natural language documents.",NONE
+What are current research topics in QA?,"[101, 102]","Progress
+Question answering systems have been extended in recent[may be outdated as of April 2023] years to encompass additional domains of knowledge[21] For example, systems have been developed to automatically answer temporal and geospatial questions, questions of definition and terminology, biographical questions, multilingual questions, and questions about the content of audio, images,[22] and video. [23] Current question answering research topics include:
+	•	interactivity—clarification of questions or answers[further explanation needed][24]
+	•	answer reuse or caching[25]
+	•	semantic parsing[26]
+	•	answer presentation[further explanation needed][27]
+	•	knowledge representation and semantic entailment[28]
+	•	social media analysis[further explanation needed] with question answering systems
+	•	sentiment analysis[29]
+	•	utilization of thematic roles[30]
+	•	Image captioning for visual question answering[22]
+	•	Embodied question answering[31]
+In 2011, Watson, a question answering computer system developed by IBM, competed in two exhibition matches of Jeopardy!","[102, 103, 104]","[23] Current question answering research topics include:
+	•	interactivity—clarification of questions or answers[further explanation needed][24]
+	•	answer reuse or caching[25]
+	•	semantic parsing[26]
+	•	answer presentation[further explanation needed][27]
+	•	knowledge representation and semantic entailment[28]
+	•	social media analysis[further explanation needed] with question answering systems
+	•	sentiment analysis[29]
+	•	utilization of thematic roles[30]
+	•	Image captioning for visual question answering[22]
+	•	Embodied question answering[31]
+In 2011, Watson, a question answering computer system developed by IBM, competed in two exhibition matches of Jeopardy! against Brad Rutter and Ken Jennings, winning by a significant margin. [32] Facebook Research made their DrQA system[33] available under an open source license.",PARTIAL
