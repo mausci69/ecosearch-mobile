@@ -1,103 +1,102 @@
+# 🌱 EcoSearch v2.1 — LLM-Free & Offline-Capable Semantic Retrieval (+ Mobile OCR)
 
-# 🌱 EcoSearch v2.0 — Semantic Retrieval + GPT Containment
+**EcoSearch** is a lean, primarily LLM-free semantic retrieval system with optional **mobile OCR capture**  
+and **offline summarisation + question generation** capabilities.
 
-**EcoSearch** is a **Retrieval-Augmented Generation (RAG)** prototype combining:  
-- 🔍 Semantic retrieval on FAISS-indexed text chunks  
-- ✂️ Sliding window chunking with optional merging  
-- 🤖 GPT-generated questions for each chunk or summary  
-- ✅ Evaluation of **Recall@1/3** based on a *dynamic GPT containment check*
+- 🔍 Dense retrieval on **FAISS-indexed** text chunks  
+- 🧭 **Cross-Encoder** reranking for sharper top results  
+- 💾 **Offline SQLite + AsyncStorage cache** for local corpora  
+- 🧠 Optional **local LLM (Mistral 7B GGUF / llama.cpp)** for summarisation + Q-generation  
+- 📷 Multi-page **mobile scan-to-PDF** ingestion flow  
+- 🧪 Tested OCR endpoint (`return_pdf=true` for PDF assembly)
+
+> GPT services are optional: EcoSearch works end-to-end offline,  
+> syncing later to enrich or replace locally generated data.
 
 ---
 
 ## 🚀 Workflow
 
-### 1️⃣ Generate
-- Upload a `.txt` file.
-- Split it into chunks of 3 sentences.
-- GPT summarises each chunk.
-- GPT generates **one question** per chunk or summary.
-- Saves `chunk_questions.json`:
+### 1) Prepare (LLM-free or Local)
+- Upload or scan a document (PDF → text via OCR).  
+- Split into fixed chunks (default = 3 sentences).  
+- Create embeddings (SentenceTransformer) → build/update **FAISS index**.  
+- If available, use local LLM for summaries + questions; else queue for later sync.  
+- Persist corpus metadata to SQLite + JSON.
 
-```json
-{
-  "chunk": "...",
-  "summary": "...",
-  "question": "...",
-  "embedding": [...]
-}
-```
+### 2) Query
+1. Embed question  
+2. Retrieve top-k via **FAISS**  
+3. Rerank with **Cross-Encoder**  
+4. Display **Top-1** chunk (+ optional alternative)  
+5. Show **agentic confidence** banner suggesting next action
 
----
-
-### 2️⃣ Query
-- Load your `chunk_questions.json`.
-- Enter a question.
-- EcoSearch retrieves:
-  - The most similar questions via cosine similarity.
-  - The linked chunk.
-- (Optional) GPT can answer using only the selected chunk ➜ real containment verification.
+### 3) (Optional) OCR → PDF Ingestion
+- Capture multiple pages on mobile.  
+- Backend endpoint assembles a single PDF or returns per-page JSON text.  
+- Works offline if cached; syncs when online.
 
 ---
 
-### 3️⃣ Evaluate
-- Load a `test_set.json` and your `chunk_questions.json`.
-- For each test question:
-  - Retrieve `top1` and `top3` chunks.
-  - GPT verifies whether the chunk actually contains enough information.
-- Outputs:
-  - `Recall@1` = percentage of questions covered by the first match.
-  - `Recall@3` = percentage covered within the top three.
+## 🧩 Backend Endpoints
+
+- `POST /prepare_corpus` — ingest text, split, embed, index  
+- `POST /query` — retrieval + rerank  
+- `POST /clear_corpus` — clear state  
+- `POST /ocr_extract` — OCR / PDF assembly  
+  - Single page: `file=@p1.jpg` `?lang=ita`  
+  - Multi-page PDF: `files[]=@p1.jpg` `files[]=@p2.jpg` `?return_pdf=true`  
 
 ---
 
-## ✅ Why containment is different
-No static `correct_chunk_indices`.  
-A chunk must **genuinely contain** the answer — GPT checks this dynamically for each test question.
+## 📱 Mobile (Expo)
+
+- **Offline-first workflow**  
+  - OCR → text → chunk → optional local summarisation/Q-generation  
+  - Store to SQLite and retrieve instantly  
+  - Queue for server upgrade when online  
+- **Files**
+  - `src/features/ocr/MultiPageScan.tsx` — multi-page UI  
+  - `src/lib/db/` — SQLite layer (planned)  
+  - `src/lib/llm/` — local LLM bridge  
+  - `src/utils/savePdf.ts` — blob → file → share  
 
 ---
 
-## 📂 Example structure
-- `eco_backend.py`
-- `eco_web.py`
-- `requirements.txt`
-- `test_set_ground_truth.json`
-- `containment_log.txt` (optional, for auditing GPT decisions)
+## ⚙️ Dependencies
+
+**Python**
+- `fastapi`, `uvicorn`, `sentence-transformers`, `faiss-cpu`  
+- `scikit-learn`, `numpy`, `pillow`, `pytesseract`
+
+**Mobile**
+- `expo-image-picker`, `expo-filesystem`, `expo-sqlite`, `react-native-llama` (placeholder)  
+- Local quantised models (`*.gguf`) for offline LLM
 
 ---
 
-## ⚙️ How to run
+## 🧪 Tests
 
-**1️⃣ Start the backend:**
-```bash
-uvicorn eco_backend:app --reload
-```
+- `pytest tests/test_ocr_extract.py` — OCR JSON + PDF  
+- Future: offline queue & sync integrity, local LLM smoke tests
 
-**2️⃣ Start the frontend:**
-```bash
-streamlit run eco_web.py
-```
+---
+
+## 🏗️ Architecture Overview
+See [`docs/architecture/mobile-offline-rag-plan.md`](docs/architecture/mobile-offline-rag-plan.md)
 
 ---
 
 ## 👨‍💻 Author
-Maurizio — Portfolio Retrieval Engineer | EcoSearch v2.0
+
+**Maurizio Scibilia** — Retrieval Engineer & Creator of EcoSearch
 
 ---
 
-## ⚖️ Licence & Ownership Disclaimer
+## ⚖️ Licence & Ownership
 
-**EcoSearch v2.0** was entirely developed by **Maurizio Scibilia** in a personal capacity.
+EcoSearch v2.1 is a personal, independent project.  
+All rights belong to the author.  
+Reuse or adaptation requires attribution.
 
-- No company assets, confidential data, or internal code were used.
-- All development was done on personal hardware, using privately funded services and tools.
-- Any working time overlaps occurred only during periods of non-allocation, without impact on any company deliverables.
-- This prototype is provided for personal portfolio and demonstration purposes only.
-
-The intellectual property rights for the design, code, and workflow remain with the author.
-
-If you wish to reuse, adapt, or extend EcoSearch, please credit the author and refer to the included licence terms.
-
----
-
-**© 2024 Maurizio Scibilia — All rights reserved.**
-
+**© 2025 Maurizio Scibilia — All rights reserved.**

@@ -1,0 +1,7 @@
+write_lock_enabled: true
+write_lock_timeout_ms: 600000
+max_chunk_tokens: 512
+
+logging:
+  jsonl_path: logs/eco_backend.log.jsonl
+  level: INFO

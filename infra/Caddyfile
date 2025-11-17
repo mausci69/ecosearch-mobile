@@ -1,0 +1,11 @@
+:8080 {
+    route /api/* {
+        uri strip_prefix /api
+        reverse_proxy api:8000
+    }
+
+    route /* {
+        reverse_proxy web:3000
+    }
+}
+

@@ -1,0 +1,15 @@
+# Local overrides (do not commit)
+*.local.yaml
+*.local.yml
+*.secret.yaml
+*.secret.yml
+secrets.yaml
+secrets.yml
+
+# Env files (if any end up here)
+.env
+*.env
+
+# OS/editor cruft
+.DS_Store
+

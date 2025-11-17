@@ -1,0 +1,27 @@
+# Agentic EcoSearch — models.yaml
+# Lock your model choices and versions here to keep runs reproducible.
+
+embedding:
+  name: "sentence-transformers/all-MiniLM-L6-v2"
+  revision: "main"
+  device: "cpu"           # "cpu" | "cuda" (set by env if available)
+
+cross_encoder:
+  name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  revision: "main"
+  device: "cpu"
+
+clarification_llm:
+  # Used for short binary clarifying prompts (optional at start).
+  provider: "openai"
+  model: "gpt-4o-mini"
+  temperature: 0.0
+
+expansion:
+  # Lemmas/synonyms expansion; set to 'heuristic' initially to avoid cost.
+  strategy: "heuristic"
+  max_terms: 4
+
+runtime:
+  seed: 42
+  torch_num_threads: 4

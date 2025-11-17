@@ -1,0 +1,3 @@
+[project.scripts]
+ecosearch-eval = "eco.cli.eval_cli:main"
+

@@ -1,0 +1,63 @@
+ts,query,action,confidence,reasons,top_chunk_id,top_cosine,top_crossencoder,top_len
+2025-09-05T10:54:17,what is closed book question answering?,answer_from_top,7.007802963256836,label=high | sim_band=high | sep_band=high | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-05T14:35:39,limitations?,clarify_or_broaden,-10.418878555297852,label=low | sim_band=low | sep_band=high | path=FAISS→CE→Low→(FAISS∪BM25)→CE,25,0.27468496561050415,-10.418878555297852,360
+2025-09-08T11:05:33,what is closed book question answering?,answer_from_top,7.007802963256836,label=high | sim_band=high | sep_band=high | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-08T11:09:59,what is closed book question answering?,answer_from_top,7.007802963256836,label=high | sim_band=high | sep_band=high | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-08T12:14:17,what is closed book question answering?,answer_from_top,7.007802963256836,label=high | sim_band=high | sep_band=high | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-08T12:41:16,In which Country is Bangkok?,clarify_or_broaden,-11.171228408813477,label=low | sim_band=low | sep_band=high | path=FAISS→CE→Low→(FAISS∪BM25)→CE,64,0.13450536131858826,-11.171228408813477,390
+2025-09-08T14:51:47,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-08T15:00:10,tell me a joke,clarify_or_broaden,-11.120750427246094,label=low | sim_band=low | sep_band=low | path=FAISS→CE→Low→(FAISS∪BM25)→CE,73,0.09370162338018417,-11.120750427246094,158
+2025-09-09T11:46:14,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-09T11:58:41,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-09T11:59:14,what is question answering?,offer_choice,5.89410400390625,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.756196141242981,5.89410400390625,576
+2025-09-09T12:08:15,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-09T12:09:16,what is the capital of France?,clarify_or_broaden,-10.477394104003906,label=low | sim_band=low | sep_band=low | path=FAISS→CE→Low→(FAISS∪BM25)→CE,73,0.1356988549232483,-10.477394104003906,158
+2025-09-09T12:09:16,what is the capital of France?,clarify_or_broaden,-10.477394104003906,label=low | sim_band=low | sep_band=low | path=FAISS→CE→Low→(FAISS∪BM25)→CE,73,0.1356988549232483,-10.477394104003906,158
+2025-09-09T12:24:12,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-09T14:23:52,What is closed-book question answering?,offer_choice,6.983383655548096,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,1.0,6.983383655548096,302
+2025-09-09T14:53:01,What is closed-book question answering?,offer_choice,6.983383655548096,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,1.0,6.983383655548096,302
+2025-09-10T10:07:38,What is closed-book question answering?,offer_choice,6.983383655548096,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,1.0,6.983383655548096,302
+2025-09-10T10:57:03,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T10:58:00,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T10:58:02,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T10:58:03,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T10:58:03,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T10:58:23,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T11:11:16,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T11:20:29,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T11:21:14,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T12:01:03,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-10T12:01:32,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-10T12:03:52,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T12:04:04,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T12:54:51,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T14:13:37,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T14:43:27,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T15:11:11,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T15:59:33,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:15:46,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:16:33,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:16:58,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:17:48,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:18:09,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:47:25,what is a question answering system?,offer_choice,6.354790687561035,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,0,0.7321218252182007,6.354790687561035,576
+2025-09-10T17:49:30,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:00:43,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:01:55,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:02:45,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-10T18:04:07,what is closed book question answering?,offer_choice,7.007802963256836,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,5,0.9764881134033203,7.007802963256836,302
+2025-09-10T18:17:00,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:18:40,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:23:32,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:37:53,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-10T18:41:06,what is a closed book question answering system?,offer_choice,6.904649257659912,label=medium | sim_band=high | sep_band=low | path=FAISS→CE,6,0.7817686796188354,6.904649257659912,269
+2025-09-17T15:14:19,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-17T15:14:19,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-17T15:26:02,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-17T15:45:26,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-17T15:46:46,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-17T16:19:07,what is a closed book question answering system?,offer_choice,high,tie,6,0.7817686796188354,6.904648780822754,269
+2025-09-19T10:12:25,what is a closed book question answering system?,offer_choice,high,tie,8,0.8542572259902954,5.871933937072754,354
+2025-09-19T10:34:27,what is a closed book question answering system?,offer_choice,high,tie,8,0.8542572259902954,5.871933937072754,354
+2025-09-19T10:35:21,what is a closed book question answering system?,answer_from_top,high,strong_match,8,0.8542572259902954,,354
+2025-10-02T12:26:35,Where should I put glass?,clarify_or_broaden,low,weak_match,1,0.31864798069000244,-9.260637283325195,161

@@ -5,17 +5,15 @@
     "scheme": "ecosearch",
     "version": "0.1.0",
     "orientation": "portrait",
-    "ios": { 
-      "supportsTablet": true, 
-      "infoPlist": { 
-        "NSCameraUsageDescription": "EcoSearch needs camera access to take photos of documents for OCR." 
-        }, 
-        "bundleIdentifier": "com.anonymous.ecosearch-mobile" 
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "EcoSearch needs camera access to take photos of documents for OCR."
       },
+      "bundleIdentifier": "com.anonymous.ecosearch-mobile"
+    },
     "android": { "permissions": ["CAMERA"] },
     "web": { "bundler": "metro" },
-    "extra": { "EXPO_PUBLIC_BACKEND_URL": "http://192.168.1.112:8010" }
+    "extra": { "EXPO_PUBLIC_BACKEND_URL": "http://maurizios-macbook-air.local:8000" }
   }
 }
-
-

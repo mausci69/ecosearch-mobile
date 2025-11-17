@@ -1,0 +1,62 @@
+# Agentic EcoSearch — policy.yaml
+# All thresholds and knobs that govern retrieval and decisions.
+# British English comments. Change here, not in code.
+
+policy_id: v0.1
+
+retrieval:
+  dense:
+    top_k: 5              # FAISS candidates before reranking
+    nprobe: 16            # IVF search breadth (if applicable)
+  sparse:
+    enabled: true
+    top_k: 10             # BM25 candidates when used
+  fuzzy:
+    enabled: true
+    top_k: 5
+    min_ratio: 0.82       # Normalised fuzzy score threshold (0–1)
+
+rerank:
+  cross_encoder_top_k: 20 # Size of the union passed to the CrossEncoder
+  accept_min_score: 0.58  # If below and no agreement, likely Low
+  prefer_dense_margin: 0.05  # top1–top2 cosine margin to call it 'separated'
+
+confidence:
+  rules:
+    high:
+      ce_min: 0.68
+      margin_min: 0.05
+    medium:
+      ce_min: 0.58
+      agreement_min: 2    # e.g., dense + sparse agree, or dense + fuzzy
+    low:
+      else: true
+
+remedial_policy:
+  # Executed when confidence == Low
+  steps:
+    - widen_dense: { nprobe: 32, top_k: 10 }
+    - expand_query: { strategy: "lemmas_synonyms", max_terms: 4 }
+    - try_sparse: { enabled: true, top_k: 15 }
+    - try_fuzzy: { enabled: true, top_k: 5 }
+  early_exit_on: ">=medium"  # stop remedies once Medium or better
+
+answering:
+  # Only answer when confidence >= Medium, and alignment passes.
+  require_confidence: ">=medium"
+  alignment:
+    jaccard_min: 0.40      # token-overlap threshold between answer & chunk
+    require_entity_presence: true
+
+timeouts:
+  controller_ms: 3500
+  retrieval_ms: 1200
+  rerank_ms: 900
+
+ui:
+  show_confidence_badge: true
+  show_policy_path: true
+
+logging:
+  jsonl_path: "logs/agentic_events.jsonl"
+  level: "INFO"           # DEBUG | INFO | WARNING | ERROR

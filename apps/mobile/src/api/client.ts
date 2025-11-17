@@ -3,6 +3,7 @@ export const API_BASE_URL = "http://192.168.1.112:8000";
 console.log("[client] API_BASE_URL =", API_BASE_URL);
 
 type HTTPMethod = "GET" | "POST";
+type ExpectType = "json" | "blob";
 
 const jitter = (baseMs: number) => Math.floor(baseMs * (1 + Math.random()));
 
@@ -95,13 +96,74 @@ export function get<T>(path: string, timeoutMs?: number) {
   return requestWithRetry<T>(path, { method: "GET", timeoutMs });
 }
 
-export function postJson<T>(path: string, body: any, timeoutMs?: number) {
-  return requestWithRetry<T>(path, {
-    method: "POST",
-    body,
-    headers: { "content-type": "application/json" },
-    timeoutMs
-  });
+/**
+ * POST helper supporting JSON (default) or binary (PDF) responses.
+ * Use opts.expect = "blob" when calling /ocr_extract?return_pdf=true.
+ */
+export async function postJson<T>(
+  path: string,
+  body: any,
+  timeoutMs = 30000,
+  opts?: { expect?: ExpectType }
+): Promise<T | Blob> {
+  const url = path.startsWith("http")
+    ? path
+    : `${API_BASE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body ?? {}),
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    if (opts?.expect === "blob") {
+      return await res.blob(); // e.g., assembled PDF
+    }
+    return (await res.json()) as T;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
+/**
+ * POST FormData helper for endpoints like /ocr_extract that expect multipart/form-data.
+ * Set opts.expect = "blob" to receive an assembled PDF when return_pdf=true.
+ */
+export async function postForm<T>(
+  path: string,
+  form: FormData,
+  timeoutMs = 30000,
+  opts?: { expect?: ExpectType }
+): Promise<T | Blob> {
+  const url = path.startsWith("http")
+    ? path
+    : `${API_BASE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      // Do NOT set content-type; fetch will set the multipart boundary automatically
+      body: form,
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    if (opts?.expect === "blob") {
+      return await res.blob(); // PDF binary
+    }
+    return (await res.json()) as T;
+  } finally {
+    clearTimeout(id);
+  }
 }
 
 export function isLocked423(e: unknown) {
