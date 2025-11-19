@@ -136,10 +136,9 @@ def generate_question(summary, existing_questions):
         base = " ".join(summary.split()[:8]).strip()
         if not base:
             base = "main point"
-        if not re.match(r"^(who|what|when|where|why|how)\b", base, re.IGNORECASE):
-            base = f"What is {base}"
+        # Use the start of the summary directly as a question, without forcing "What is"
         base_words = base.split()[:10]
-        question = " ".join(base_words).rstrip("?") + "?"
+        question = " ".join(base_words).rstrip("?.!").strip() + "?"
         if question in existing_questions:
             return None, None
         embedding = embedder.encode(question)

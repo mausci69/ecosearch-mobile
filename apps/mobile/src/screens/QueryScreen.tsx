@@ -290,14 +290,13 @@ export default function QueryScreen() {
           guiding: res.guiding_question,
         });
 
-        // Se non c'è chunk utilizzabile, niente UI.
-        if (!hasChunk || badScore) {
+        // If there is no usable chunk, do not render anything.
+        if (!hasChunk) {
           return null;
         }
 
-        // Se low_confidence → mostriamo banner warning, ma comunque il chunk
-        // resta disponibile come contesto (decidi tu: qui lo rendiamo visibile).
-        if (low || gqMismatch) {
+        // If low_confidence → we show banner warning, but still the chunk remains available.
+        if (low) {
           return (
             <View
               style={{
@@ -353,7 +352,7 @@ export default function QueryScreen() {
           );
         }
 
-        // Caso "buono": mostriamo tutto
+        // Good case: we show everything
         return (
           <View
             style={{

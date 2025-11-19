@@ -129,18 +129,7 @@ export default function App() {
         return;
       }
 
-      // Negative score is treated as invalid
-      if (typeof data.score === "number" && data.score < 0) {
-        Alert.alert(
-          t("ask.noMatchTitle", "No match found"),
-          t(
-            "ask.noMatchBody",
-            "I could not find a reliable match for your question."
-          )
-        );
-        setResult(null);
-        return;
-      }
+      // Negative scores are allowed; low-confidence will be handled in QueryScreen.
 
       // All good: store as-is (UI will interpret low_confidence if set)
       setResult(data);
@@ -446,8 +435,8 @@ export default function App() {
                 return null;
               }
 
-              // Low-confidence or mismatch → show warning + passage
-              if (low || gqMismatch) {
+              // Low-confidence → show warning + passage
+              if (low) {
                 return (
                   <View
                     style={{
@@ -519,10 +508,56 @@ export default function App() {
                     styles.cardLarge
                   }
                 >
+                  {result.guiding_question ? (
+                    <>
+                      <Text
+                        style={
+                          styles.sectionTitle
+                        }
+                      >
+                        {t(
+                          "ask.guidingQuestion",
+                          "Guiding question"
+                        )}
+                      </Text>
+                      <Text
+                        style={
+                          styles.chunkText
+                        }
+                      >
+                        {result.guiding_question}
+                      </Text>
+                    </>
+                  ) : null}
+
+                  {result.summary ? (
+                    <>
+                      <Text
+                        style={[
+                          styles.sectionTitle,
+                          { marginTop: 8 },
+                        ]}
+                      >
+                        {t(
+                          "ask.summary",
+                          "Summary"
+                        )}
+                      </Text>
+                      <Text
+                        style={
+                          styles.chunkText
+                        }
+                      >
+                        {result.summary}
+                      </Text>
+                    </>
+                  ) : null}
+
                   <Text
-                    style={
-                      styles.sectionTitle
-                    }
+                    style={[
+                      styles.sectionTitle,
+                      { marginTop: 8 },
+                    ]}
                   >
                     {t(
                       "ask.topPassage",
@@ -681,10 +716,16 @@ export default function App() {
 
         {/* SETTINGS TAB */}
         {mode === "settings" && (
-          <Settings
-            debugHidden={debugHidden}
-            onSetDebugHidden={setDebugHidden}
-          />
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingBottom: 40 }}
+            keyboardShouldPersistTaps="handled"
+          >
+            <Settings
+              debugHidden={debugHidden}
+              onSetDebugHidden={setDebugHidden}
+            />
+          </ScrollView>
         )}
 
         {!debugHidden && <DebugBanner />}
