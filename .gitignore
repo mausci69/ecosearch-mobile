@@ -28,3 +28,16 @@ models/
 
 # Local-only legacy backend (mobile-only project)
 eco_backend.py
+
+# --- Local eval artefacts (mobile-only repo) ---
+eval_runs_ab/
+eval_log.txt
+evaluation_results_local.json
+evaluate_local.py
+payload_build_test_set.json
+payload_evaluate.json
+corpus_qa_from_txt.json
+legacy_json/
+eco/
+backend/
+*.py
