@@ -25,3 +25,6 @@ data/
 datasets/
 models/
 
+
+# Local-only legacy backend (mobile-only project)
+eco_backend.py
