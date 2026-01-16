@@ -10,9 +10,24 @@ export function isOffline(): boolean {
 }
 
 /** Decide if a retrieved result should be flagged as low confidence. */
-export function isLowConfidence(res: Pick<QueryResponse, "low_confidence" | "cosine_score">): boolean {
+export function isLowConfidence(
+  res: Pick<QueryResponse, "low_confidence" | "cosine_score" | "confidence">
+): boolean {
+  if (res?.confidence === "low") return true;
   if (typeof res.low_confidence === "boolean") return res.low_confidence;
   return (res.cosine_score ?? 0) < 0.08; // same threshold used in api.ts
+}
+
+export function finalConfidence(params: {
+  baseline: "high" | "medium" | "low";
+  consensus_ok: boolean;
+}): "high" | "medium" | "low" {
+  // Consensus must never change the retrieved chunk; it can only adjust confidence.
+  // Rule: only downgrade when consensus fails.
+  if (params.consensus_ok) return params.baseline;
+  if (params.baseline === "high") return "medium";
+  if (params.baseline === "medium") return "low";
+  return "low";
 }
 
 /** Pick the i18n key for the low-confidence hint. */
