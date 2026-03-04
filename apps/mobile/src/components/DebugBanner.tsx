@@ -6,6 +6,7 @@ import { health, HealthResponse } from "../lib/api";
 import { getOcrLang } from "../lib/lang";
 
 export default function DebugBanner({ hidden = false }: { hidden?: boolean }) {
+  return null;
   const { t } = useTranslation();
   const [info, setInfo] = useState<HealthResponse | null>(null);
   const [ocrLang, setOcrLangState] = useState<string>("?");

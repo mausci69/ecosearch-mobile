@@ -326,33 +326,6 @@ export default function App() {
               )}
             </Text>
           </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[
-              styles.tab,
-              mode === "settings" &&
-                styles.tabActive,
-            ]}
-            onPress={() => setMode("settings")}
-            disabled={mode === "settings"}
-            accessibilityRole="tab"
-            accessibilityState={{
-              selected: mode === "settings",
-            }}
-          >
-            <Text
-              style={[
-                styles.tabText,
-                mode === "settings" &&
-                  styles.tabTextActive,
-              ]}
-            >
-              {t(
-                "settings.title",
-                "Settings"
-              )}
-            </Text>
-          </TouchableOpacity>
         </View>
 
         {/* ASK TAB */}

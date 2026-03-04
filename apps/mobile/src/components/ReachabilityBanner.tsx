@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { pingHealth, BASE_URL } from "../lib/client";
+import { BASE_URL } from "../lib/client";
+import { health } from "../lib/api";
 
 export default function ReachabilityBanner() {
+  return null;
   const [ok, setOk] = useState<boolean | null>(null);
   const [checking, setChecking] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -11,11 +13,13 @@ export default function ReachabilityBanner() {
   const check = useCallback(async () => {
     setChecking(true);
     try {
-      const r = await pingHealth(2000);
-      setOk(r.ok);
-      setError(r.ok ? undefined : r.error);
+      const r = await health();
+      const isOk = r?.status === "ok";
 
-      if (r.ok) {
+      setOk(isOk);
+      setError(isOk ? undefined : "Server not responding");
+
+      if (isOk) {
         setOkFlash(true);
         setTimeout(() => setOkFlash(false), 1200);
       }
