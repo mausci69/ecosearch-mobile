@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { query, answerFromChunk } from "../lib/api";
-import type { QueryResponse, AnswerFromChunkResponse } from "../lib/api";
+import { evidence as query } from "../lib/api";
+import type { EvidenceResponse } from "../lib/api";
 import { isOffline } from "../lib/agentic";
 import { useLocalEmbeddings } from "../hooks/useLocalEmbeddings";
 
@@ -37,8 +37,8 @@ export default function QueryScreen() {
 
   const [question, setQuestion] = useState<string>("");
   const [busy, setBusy] = useState<boolean>(false);
-  const [res, setRes] = useState<QueryResponse | null>(null);
-  const [ans, setAns] = useState<AnswerFromChunkResponse | null>(null);
+  const [res, setRes] = useState<EvidenceResponse | null>(null);
+  // Retrieval-only mode: no generated answer state.
 
   // Local embeddings (offline) state
   const {
@@ -60,7 +60,6 @@ export default function QueryScreen() {
     try {
       setBusy(true);
       setRes(null);
-      setAns(null);
 
       // OFFLINE PATH (local embeddings)
       if (isOffline()) {
@@ -103,16 +102,12 @@ export default function QueryScreen() {
         };
 
         setRes(localRes as QueryResponse);
-
-        const a = await answerFromChunk(q, top.text);
-        setAns(a);
-
         return;
       }
 
       // ONLINE PATH (server /query endpoint)
       const out = await query(q);
-      console.log("[Ask] /query response:", out);
+      console.log("[Ask] /evidence response:", out);
 
       // 1. Corpus not ready → show a clear message
       if ((out as any)?.ready === false) {
@@ -127,12 +122,11 @@ export default function QueryScreen() {
           msg
         );
         setRes(null);
-        setAns(null);
         return;
       }
 
       // 2. No usable chunk → treat as no match
-      const chunk = (out as any)?.chunk;
+      const chunk = (out as any)?.evidence_text ?? (out as any)?.chunk;
       const hasChunk =
         typeof chunk === "string" && chunk.trim().length > 0;
 
@@ -145,7 +139,6 @@ export default function QueryScreen() {
           )
         );
         setRes(null);
-        setAns(null);
         return;
       }
 
@@ -162,28 +155,17 @@ export default function QueryScreen() {
 
       // Let the UI handle low_confidence and mismatches explicitly
       // (banner, icons, etc.) without discarding the retrieved chunk.
-      setRes(out as QueryResponse);
+      setRes(out as EvidenceResponse);
 
-      // Optional LLM answer from the chunk (if supported by your backend; otherwise remains null)
-      try {
-        const ansOut = await answerFromChunk(
-          q,
-          String(chunk)
-        );
-        setAns(ansOut);
-      } catch (e: any) {
-        console.log(
-          "[Ask] answerFromChunk failed:",
-          e?.message || e
-        );
-      }
+      // Retrieval-only mode: do not generate an answer here.
+      // (We only return/show the evidence span.)
+
     } catch (e: any) {
       Alert.alert(
         t("ask.errorTitle", "Error"),
         String(e?.message || e)
       );
       setRes(null);
-      setAns(null);
     } finally {
       setBusy(false);
     }
@@ -265,14 +247,14 @@ export default function QueryScreen() {
         </View>
       )}
 
-      {/* Risultato */}
+      {/* Result */}
       {(() => {
         if (!res) return null;
 
         const hasChunk =
-          !!res.chunk &&
-          String(res.chunk).trim().length > 0;
-        const low = res.low_confidence === true;
+          !!res.evidence_text &&
+          String(res.evidence_text).trim().length > 0;
+        const low = res.evidence_type === "sentence_span";
         const badScore =
           typeof res.score === "number" &&
           res.score < 0;
@@ -345,7 +327,7 @@ export default function QueryScreen() {
                     lineHeight: 20,
                   }}
                 >
-                  {res.chunk}
+                  {res.evidence_text}
                 </Text>
               </ScrollView>
             </View>
@@ -361,49 +343,6 @@ export default function QueryScreen() {
               marginTop: 10,
             }}
           >
-            <Text
-              style={{
-                fontWeight: "600",
-              }}
-            >
-              {t(
-                "ask.guidingQuestion",
-                "Guiding question"
-              )}
-            </Text>
-            <Text>{res.guiding_question}</Text>
-
-            <Text
-              style={{
-                fontWeight: "600",
-                marginTop: 8,
-              }}
-            >
-              {t("ask.summary", "Summary")}
-            </Text>
-            <Text>{res.summary || "—"}</Text>
-
-            <Text
-              style={{
-                fontWeight: "600",
-                marginTop: 8,
-              }}
-            >
-              {t("ask.scoreLabel", "Score")}
-              {": "}
-              {typeof res.score === "number"
-                ? res.score.toFixed(4)
-                : "—"}{" "}
-              ·{" "}
-              {t("ask.cosineLabel", "Cosine")}
-              {": "}
-              {typeof res.cosine_score === "number"
-                ? Number(
-                    res.cosine_score
-                  ).toFixed(4)
-                : "—"}
-            </Text>
-
             <Text
               style={{
                 fontWeight: "600",
@@ -429,53 +368,11 @@ export default function QueryScreen() {
                   lineHeight: 20,
                 }}
               >
-                {res.chunk}
+                {res.evidence_text}
               </Text>
             </ScrollView>
 
-            {/* Risposta generata dal chunk (se disponibile) */}
-            {ans?.answer ? (
-              <View
-                style={{
-                  marginTop: 10,
-                  padding: 10,
-                  borderRadius: 8,
-                  backgroundColor: "#eef7ee",
-                  borderWidth: 1,
-                  borderColor: "#9ad29a",
-                }}
-              >
-                <Text
-                  style={{
-                    fontWeight: "700",
-                    marginBottom: 4,
-                  }}
-                >
-                  {t(
-                    "ask.answerFromChunkTitle",
-                    "Answer from selected passage"
-                  )}
-                </Text>
-                <Text
-                  style={{
-                    lineHeight: 20,
-                  }}
-                >
-                  {ans.answer}
-                </Text>
-                {ans.note ? (
-                  <Text
-                    style={{
-                      marginTop: 6,
-                      fontSize: 12,
-                      opacity: 0.8,
-                    }}
-                  >
-                    {ans.note}
-                  </Text>
-                ) : null}
-              </View>
-            ) : null}
+            {null}
           </View>
         );
       })()}

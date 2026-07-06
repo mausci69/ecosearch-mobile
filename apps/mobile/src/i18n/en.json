@@ -19,7 +19,13 @@
   },
   "common": {
     "cancel": "Cancel",
-    "clear": "Clear"
+    "clear": "Clear",
+    "close": "Close"
+  },
+  "tabs": {
+    "ask": "Ask",
+    "uploadText": "Upload",
+    "scanPdf": "Scan"
   },
   "a11y": {
     "tabAsk": "Ask tab",
@@ -67,6 +73,18 @@
     "prepareFromText": "Prepare corpus from text",
     "clearQueue": "Clear queue",
     "reorderTip": "Tip: reorder pages using the arrows; remove with the × button.",
+    "saveBtn": "Save Corpus",
+    "loadBtn": "Load Corpus",
+    "chooseCorpus": "Choose a saved corpus to load.",
+    "chooseName": "Choose a name for the saved corpus.",
+    "savedCorpusShort": "Prepared corpus saved.",
+    "loadedSavedCorpusShort": "Saved corpus loaded.",
+    "noActiveCorpusToSave": "No active prepared corpus to save.",
+    "noSavedCorpus": "No saved prepared corpus found.",
+    "saveFailed": "Save failed.",
+    "saveFailedTitle": "Save failed",
+    "loadFailed": "Load failed.",
+    "loadFailedTitle": "Load failed",
     "alerts": {},
     "alertsLegacy": {},
     "alert": {

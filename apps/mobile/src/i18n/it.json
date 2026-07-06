@@ -19,7 +19,13 @@
   },
   "common": {
     "cancel": "Annulla",
-    "clear": "Svuota"
+    "clear": "Svuota",
+    "close": "Chiudi"
+  },
+  "tabs": {
+    "ask": "Ask",
+    "uploadText": "Upload",
+    "scanPdf": "Scan"
   },
   "a11y": {
     "tabAsk": "Scheda Domanda",
@@ -67,6 +73,18 @@
     "prepareFromText": "Prepara corpus dal testo",
     "clearQueue": "Svuota coda",
     "reorderTip": "Suggerimento: riordina le pagine con le frecce; rimuovi con il pulsante ×.",
+    "saveBtn": "Salva corpus",
+    "loadBtn": "Carica corpus",
+    "chooseCorpus": "Scegli un corpus salvato da caricare.",
+    "chooseName": "Scegli un nome per il corpus salvato.",
+    "savedCorpusShort": "Corpus salvato.",
+    "loadedSavedCorpusShort": "Corpus caricato.",
+    "noActiveCorpusToSave": "Nessun corpus preparato attivo da salvare.",
+    "noSavedCorpus": "Nessun corpus salvato trovato.",
+    "saveFailed": "Salvataggio non riuscito.",
+    "saveFailedTitle": "Salvataggio non riuscito",
+    "loadFailed": "Caricamento non riuscito.",
+    "loadFailedTitle": "Caricamento non riuscito",
     "alerts": {},
     "alertsLegacy": {},
     "alert": {

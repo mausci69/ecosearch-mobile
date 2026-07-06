@@ -1,3 +1,5 @@
+// /New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/src/i18n/index.ts
+
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as Localization from "expo-localization";
@@ -9,8 +11,8 @@ const resources = {
     translation: {
       tabs: {
         ask: "Ask",
-        uploadText: "Upload (text)",
-        scanPdf: "Scan (PDF)"
+        uploadText: "Upload",
+        scanPdf: "Scan"
       },
       app: {
         title: "EcoSearch Mobile",
@@ -22,15 +24,11 @@ const resources = {
         english: "English",
         italian: "Italiano",
         toastChanged: "Language changed to {{lang}}",
-
-        // ✅ Added keys expected by Settings.tsx
         languageHint: "Applies to app text and messages.",
         ocrEngine: "OCR engine",
         ocrHint: "On-device may be slower but can work offline; server is faster when online.",
         server: "Server",
         device: "On-device",
-
-        // Keep detailed engine labels (used elsewhere)
         ocrEngine_help: "Choose where text is extracted.",
         ocrEngine_mlkit: "On-device (ML Kit)",
         ocrEngine_server: "Server (Tesseract)",
@@ -43,8 +41,6 @@ const resources = {
           simulator: "Simulator"
         },
         genHint: "Choose your preferred model. Some options require internet connectivity.",
-
-        // ✅ Save related keys used by Settings.tsx
         save: "Save",
         saving: "Saving…",
         saved: "Settings saved",
@@ -95,6 +91,9 @@ const resources = {
       common: {
         ok: "OK",
         cancel: "Cancel",
+        clear: "Clear",
+        close: "Close",
+        save: "Save",
         retry: "Retry",
         error: {
           badRequest: "Invalid request. Please check your input.",
@@ -113,6 +112,7 @@ const resources = {
         prepareFailed: "Prepare failed.",
         cleared: "Corpus cleared.",
         clearFailed: "Clear failed.",
+        prepareFailedTitle: "Prepare failed",
         alert: {
           uploadFailedTitle: "Upload failed",
           tooLargeTitle: "File too large",
@@ -141,6 +141,7 @@ const resources = {
         }
       },
       scan: {
+        uploadImage: "Upload image",
         addPageCamera: "+ Add Page (Camera)",
         addPageGallery: "+ Add Page (Gallery)",
         retakeLast: "Retake last page",
@@ -151,9 +152,23 @@ const resources = {
         flowTitle: "Scan pages → Preview → Assemble or Extract",
         pageCount_one: "{{count}} page",
         pageCount_other: "{{count}} pages",
+        pageCount: "Pages: {{count}}",
         ocrLanguageLabel: "OCR language:",
         langEnglish: "English",
         langItalian: "Italiano",
+        prepareCorpus: "Prepare Corpus",
+        saveBtn: "Save Corpus",
+        loadBtn: "Load Corpus",
+        chooseCorpus: "Choose a saved corpus to load.",
+        chooseName: "Choose a name for the saved corpus.",
+        savedCorpusShort: "Prepared corpus saved.",
+        loadedSavedCorpusShort: "Saved corpus loaded.",
+        noActiveCorpusToSave: "No active prepared corpus to save.",
+        noSavedCorpus: "No saved prepared corpus found.",
+        saveFailed: "Save failed.",
+        saveFailedTitle: "Save failed",
+        loadFailed: "Load failed.",
+        loadFailedTitle: "Load failed",
         backend: {
           okBadge: "Backend: {{status}} — OCR: ready ({{lang}})",
           unreachableBadge: "Backend unreachable: {{status}}"
@@ -194,6 +209,9 @@ const resources = {
       common: {
         ok: "OK",
         cancel: "Annulla",
+        clear: "Svuota",
+        close: "Chiudi",
+        save: "Salva",
         retry: "Riprova",
         error: {
           badRequest: "Richiesta non valida. Controlla i dati inseriti.",
@@ -204,8 +222,8 @@ const resources = {
       },
       tabs: {
         ask: "Chiedi",
-        uploadText: "Carica (testo)",
-        scanPdf: "Scansiona (PDF)"
+        uploadText: "Carica",
+        scanPdf: "Scansiona"
       },
       app: {
         title: "EcoSearch Mobile",
@@ -217,15 +235,11 @@ const resources = {
         english: "English",
         italian: "Italiano",
         toastChanged: "Lingua cambiata in {{lang}}",
-
-        // ✅ Chiavi aggiunte per Settings.tsx
         languageHint: "Si applica al testo e ai messaggi dell’app.",
         ocrEngine: "Motore OCR",
         ocrHint: "Sul dispositivo può essere più lento ma funziona offline; il server è più veloce quando sei online.",
         server: "Server",
         device: "Sul dispositivo",
-
-        // Etichette dettagliate (manteniamo per altri punti dell’app)
         ocrEngine_help: "Scegli dove estrarre il testo.",
         ocrEngine_mlkit: "Sul dispositivo (ML Kit)",
         ocrEngine_server: "Server (Tesseract)",
@@ -238,8 +252,6 @@ const resources = {
           simulator: "Simulatore"
         },
         genHint: "Scegli il modello preferito. Alcune opzioni richiedono connessione a Internet.",
-
-        // ✅ Chiavi salvataggio usate da Settings.tsx
         save: "Salva",
         saving: "Salvataggio in corso…",
         saved: "Impostazioni salvate",
@@ -289,6 +301,7 @@ const resources = {
         prepareFailed: "Preparazione non riuscita.",
         cleared: "Corpus svuotato.",
         clearFailed: "Pulizia non riuscita.",
+        prepareFailedTitle: "Preparazione non riuscita",
         alert: {
           uploadFailedTitle: "Caricamento non riuscito",
           tooLargeTitle: "File troppo grande",
@@ -317,6 +330,7 @@ const resources = {
         }
       },
       scan: {
+        uploadImage: "Carica immagine",
         addPageCamera: "+ Aggiungi pagina (Fotocamera)",
         addPageGallery: "+ Aggiungi pagina (Galleria)",
         retakeLast: "Rifai l’ultima pagina",
@@ -327,9 +341,23 @@ const resources = {
         flowTitle: "Scansiona pagine → Anteprima → Crea o Estrai",
         pageCount_one: "{{count}} pagina",
         pageCount_other: "{{count}} pagine",
+        pageCount: "Pagine: {{count}}",
         ocrLanguageLabel: "Lingua OCR:",
         langEnglish: "English",
         langItalian: "Italiano",
+        prepareCorpus: "Prepara corpus",
+        saveBtn: "Salva corpus",
+        loadBtn: "Carica corpus",
+        chooseCorpus: "Scegli un corpus salvato da caricare.",
+        chooseName: "Scegli un nome per il corpus salvato.",
+        savedCorpusShort: "Corpus salvato.",
+        loadedSavedCorpusShort: "Corpus caricato.",
+        noActiveCorpusToSave: "Nessun corpus preparato attivo da salvare.",
+        noSavedCorpus: "Nessun corpus salvato trovato.",
+        saveFailed: "Salvataggio non riuscito.",
+        saveFailedTitle: "Salvataggio non riuscito",
+        loadFailed: "Caricamento non riuscito.",
+        loadFailedTitle: "Caricamento non riuscito",
         backend: {
           okBadge: "Backend: {{status}} — OCR: pronto ({{lang}})",
           unreachableBadge: "Backend non raggiungibile: {{status}}"
@@ -372,7 +400,7 @@ const tag =
   (Localization as any).locale ??
   "";
 const device =
-  (typeof tag === "string" && tag.trim().length) ? tag.split("-")[0] : "en";
+  typeof tag === "string" && tag.trim().length ? tag.split("-")[0] : "en";
 
 i18n.use(initReactI18next).init({
   resources,
@@ -385,7 +413,6 @@ i18n.use(initReactI18next).init({
   }
 });
 
-//  load saved language (if any) after init
 (async () => {
   try {
     const saved = await getItemSafe(STORAGE_KEYS.APP_LANG);
@@ -393,7 +420,7 @@ i18n.use(initReactI18next).init({
       await i18n.changeLanguage(saved);
     }
   } catch {
-    // ignore — fall back to device/default
+    // Ignore and keep device/default language.
   }
 })();
 
