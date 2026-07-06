@@ -41,3 +41,22 @@ legacy_json/
 eco/
 backend/
 *.py
+
+# Mobile local build/output artifacts
+/apps/mobile/dist-eas-test/
+/apps/mobile/coverage/
+
+# Mobile local evaluation outputs
+/apps/mobile/ecosearch_eval_results.csv
+/apps/mobile/ecosearch_eval_results.json
+
+# Mobile local test/demo corpora
+/apps/mobile/corpus_*.json
+/apps/mobile/test_set_question_answering_25_short_queries.json
+
+# Mobile local helper scripts
+/apps/mobile/evaluate_ecosearch_corpus.py
+
+# Mobile draft/old assets
+/apps/mobile/assets/icon_draft.png
+/apps/mobile/assets/icon_old.png
