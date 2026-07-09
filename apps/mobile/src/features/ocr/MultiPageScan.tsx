@@ -250,12 +250,14 @@ export default function MultiPageScan({ styles }: Props) {
   const buildFilesForm = () => {
     const form = new FormData();
     assets.forEach((a, i) => {
-      form.append("files", {
-        // @ts-expect-error React Native file part
-        uri: a.uri,
-        name: a.fileName || `page_${i + 1}.jpg`,
-        type: (a as any).mimeType || "image/jpeg",
-      });
+      form.append(
+        "files",
+        {
+          uri: a.uri,
+          name: a.fileName || `page_${i + 1}.jpg`,
+          type: (a as any).mimeType || "image/jpeg",
+        } as any
+      );
     });
     return form;
   };

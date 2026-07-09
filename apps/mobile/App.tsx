@@ -11,7 +11,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
 
-import ScanScreen from "./src/screens/ScanScreen";
+import MultiPageScan from "./src/features/ocr/MultiPageScan";
 import QueryScreen from "./src/screens/QueryScreen";
 import Settings from "./src/screens/Settings";
 import ToastProvider from "./src/components/Toast";
@@ -80,7 +80,7 @@ export default function App() {
             contentContainerStyle={styles.bodyContent}
             keyboardShouldPersistTaps="handled"
           >
-            <ScanScreen />
+            <MultiPageScan styles={styles} />
           </ScrollView>
         )}
 

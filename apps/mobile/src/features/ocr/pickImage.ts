@@ -38,11 +38,11 @@ export async function pickImageAsset(
   }
 
   const pickerOpts = {
-    mediaTypes: ["images"] as const,
-    quality: 0.8 as const,
+    mediaTypes: ["images"],
+    quality: 0.8,
     allowsEditing: false,
     exif: false,
-  };
+  } as any;
 
   const result =
     source === "camera"
