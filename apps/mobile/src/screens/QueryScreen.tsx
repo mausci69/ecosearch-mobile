@@ -10,10 +10,13 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { evidence as query } from "../lib/api";
-import type { EvidenceResponse } from "../lib/api";
-import { isOffline } from "../lib/agentic";
-import { useLocalEmbeddings } from "../hooks/useLocalEmbeddings";
+import { query } from "../lib/api";
+import type { QueryResponse } from "../lib/api";
+
+type ScreenResponse = QueryResponse & {
+  evidence_text?: string;
+  evidence_type?: string;
+};
 
 function norm(s: unknown): string {
   return String(s ?? "")
@@ -37,15 +40,8 @@ export default function QueryScreen() {
 
   const [question, setQuestion] = useState<string>("");
   const [busy, setBusy] = useState<boolean>(false);
-  const [res, setRes] = useState<EvidenceResponse | null>(null);
+  const [res, setRes] = useState<ScreenResponse | null>(null);
   // Retrieval-only mode: no generated answer state.
-
-  // Local embeddings (offline) state
-  const {
-    ready: localReady,
-    busy: localBusy,
-    query: queryLocal,
-  } = useLocalEmbeddings();
 
   async function handleAsk() {
     const q = question.trim();
@@ -61,50 +57,7 @@ export default function QueryScreen() {
       setBusy(true);
       setRes(null);
 
-      // OFFLINE PATH (local embeddings)
-      if (isOffline()) {
-        if (!localReady) {
-          Alert.alert(
-            t("ask.local.notReadyTitle", "Offline not ready"),
-            t(
-              "ask.local.notReadyBody",
-              "Prepare local embeddings first on the Scan/Upload screen."
-            )
-          );
-          return;
-        }
-
-        const hits = await queryLocal(q, 1);
-        if (!hits.length) {
-          Alert.alert(
-            t("ask.local.noResultsTitle", "No local results"),
-            t(
-              "ask.local.noResultsBody",
-              "Try a different question or prepare a new local corpus."
-            )
-          );
-          return;
-        }
-
-        const top = hits[0];
-        const score =
-          typeof top.score === "number" ? top.score : 0;
-        const COSINE_OK = score >= 0.35;
-
-        const localRes: Partial<QueryResponse> = {
-          chunk: top.text,
-          guiding_question: q,
-          summary: "",
-          cosine_score: score,
-          score,
-          low_confidence: !COSINE_OK,
-          ready: true,
-        };
-
-        setRes(localRes as QueryResponse);
-        return;
-      }
-
+      // MOBILE-ONLY PATH (local prepared corpus via api.query)
       // ONLINE PATH (server /query endpoint)
       const out = await query(q);
       console.log("[Ask] /evidence response:", out);
@@ -155,7 +108,7 @@ export default function QueryScreen() {
 
       // Let the UI handle low_confidence and mismatches explicitly
       // (banner, icons, etc.) without discarding the retrieved chunk.
-      setRes(out as EvidenceResponse);
+      setRes(out as ScreenResponse);
 
       // Retrieval-only mode: do not generate an answer here.
       // (We only return/show the evidence span.)
@@ -171,7 +124,7 @@ export default function QueryScreen() {
     }
   }
 
-  const disabled = busy || localBusy;
+  const disabled = busy;
 
   // RENDER
   return (
@@ -251,10 +204,13 @@ export default function QueryScreen() {
       {(() => {
         if (!res) return null;
 
+        const evidenceText = res.evidence_text ?? res.chunk;
         const hasChunk =
-          !!res.evidence_text &&
-          String(res.evidence_text).trim().length > 0;
-        const low = res.evidence_type === "sentence_span";
+          typeof evidenceText === "string" &&
+          evidenceText.trim().length > 0;
+        const low =
+          res.low_confidence === true ||
+          res.evidence_type === "sentence_span";
         const badScore =
           typeof res.score === "number" &&
           res.score < 0;
@@ -327,7 +283,7 @@ export default function QueryScreen() {
                     lineHeight: 20,
                   }}
                 >
-                  {res.evidence_text}
+                  {evidenceText}
                 </Text>
               </ScrollView>
             </View>
@@ -368,7 +324,7 @@ export default function QueryScreen() {
                   lineHeight: 20,
                 }}
               >
-                {res.evidence_text}
+                {evidenceText}
               </Text>
             </ScrollView>
 
