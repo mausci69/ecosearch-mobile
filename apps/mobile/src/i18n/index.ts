@@ -10,7 +10,9 @@ const resources = {
   en: {
     translation: {
       tabs: {
+        scan: "Scan",
         ask: "Ask",
+        settings: "Settings",
         uploadText: "Upload",
         scanPdf: "Scan"
       },
@@ -33,8 +35,15 @@ const resources = {
         ocrEngine_mlkit: "On-device (ML Kit)",
         ocrEngine_server: "Server (Tesseract)",
         airplaneNote: "Airplane mode: on-device OCR works offline.",
+        genEngineTitle: "Generation engine",
         genEngine: {
           label: "Generation engine",
+          server: "Server",
+          local: "On-device",
+          auto: "Auto (prefer local)",
+          simulator: "Simulator"
+        },
+        genEngineOptions: {
           server: "Server",
           local: "On-device",
           auto: "Auto (prefer local)",
@@ -221,7 +230,9 @@ const resources = {
         }
       },
       tabs: {
+        scan: "Scansiona",
         ask: "Chiedi",
+        settings: "Impostazioni",
         uploadText: "Carica",
         scanPdf: "Scansiona"
       },
@@ -244,8 +255,15 @@ const resources = {
         ocrEngine_mlkit: "Sul dispositivo (ML Kit)",
         ocrEngine_server: "Server (Tesseract)",
         airplaneNote: "Modalità aereo: l’OCR sul dispositivo funziona offline.",
+        genEngineTitle: "Motore di generazione",
         genEngine: {
           label: "Motore di generazione",
+          server: "Server",
+          local: "Sul dispositivo",
+          auto: "Auto (preferisci locale)",
+          simulator: "Simulatore"
+        },
+        genEngineOptions: {
           server: "Server",
           local: "Sul dispositivo",
           auto: "Auto (preferisci locale)",

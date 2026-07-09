@@ -7,25 +7,22 @@ import { setOcrLang } from "../lib/lang";
 
 // Local components & storage helpers
 import GenEnginePicker from "../components/GenEnginePicker";
-import { STORAGE_KEYS, getGenEngine, type GenEngine } from "../constants/storage";
-// Alias imports (they may be missing on some branches)
-import {
-  setItemSafe,
-  getOcrEngine as _getOcrEngine,
-  setOcrEngine as _setOcrEngine,
-  type OcrEngine,
-} from "../utils/storage";
+import { STORAGE_KEYS, getGenEngine } from "../constants/storage";
+import type { GenEngine } from "../constants/genEngine";
+import { setItemSafe, getItemSafe } from "../utils/storage";
 
-// Safe fallbacks
-const getOcrEngine: () => Promise<OcrEngine> =
-  typeof _getOcrEngine === "function" ? _getOcrEngine : async () => "server";
+type OcrEngine = "server" | "device";
 
-const setOcrEngine: (v: OcrEngine) => Promise<void> =
-  typeof _setOcrEngine === "function"
-    ? _setOcrEngine
-    : async (v: OcrEngine) => {
-        await setItemSafe("OCR_ENGINE", v);
-      };
+const OCR_ENGINE_KEY = "OCR_ENGINE";
+
+async function getOcrEngine(): Promise<OcrEngine> {
+  const stored = await getItemSafe(OCR_ENGINE_KEY);
+  return stored === "device" || stored === "server" ? stored : "server";
+}
+
+async function setOcrEngine(v: OcrEngine): Promise<void> {
+  await setItemSafe(OCR_ENGINE_KEY, v);
+}
 
 // Keys & constants
 const LANG_KEY = STORAGE_KEYS.APP_LANG;
@@ -199,7 +196,7 @@ useEffect(() => {
 
       {/* Generation engine picker */}
       <View style={styles.card}>
-        <Text style={styles.sectionTitle}>{t("settings.genEngine", "Generation engine")}</Text>
+        <Text style={styles.sectionTitle}>{t("settings.genEngineTitle", "Generation engine")}</Text>
         <GenEnginePicker value={genEngine} onChange={(next: GenEngine) => setGenEngineState(next)} disabled={busy} />
         <Text style={styles.muted}>
           {t("settings.genHint", "Choose your preferred model. Some options require internet connectivity.")}
