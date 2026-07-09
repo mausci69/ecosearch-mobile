@@ -17,7 +17,7 @@ import type { ImagePickerAsset } from "expo-image-picker";
 import * as ImageManipulator from "expo-image-manipulator";
 
 import { getOcrLang, setOcrLang as setGlobalOcrLang } from "../../lib/lang";
-import { ocrExtractPages, prepareCorpusFromText, health } from "../../lib/api";
+import { ocrExtractPagesSmart, prepareCorpusFromText, health } from "../../lib/api";
 import { pickImageAsset } from "./pickImage";
 import { generateAnswer } from "../../lib/generate";
 // import LocalStatusInline from "../../components/LocalStatusInline";
@@ -282,8 +282,7 @@ export default function MultiPageScan({ styles }: Props) {
       }
 
       const form = buildFilesForm();
-      const lang = ocrLang === "en" ? "eng" : "ita";
-      const ocrRes: any = await ocrExtractPages(form, { lang });
+      const ocrRes: any = await ocrExtractPagesSmart(assets.map((a, i) => ({ uri: a.uri, name: `page-${i + 1}.jpg` })), form, { lang: ocrLang });
 
       const extracted = String(ocrRes?.text || "").trim();
       setCombinedText(extracted);
