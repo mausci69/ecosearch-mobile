@@ -13,7 +13,7 @@
         "NSPhotoLibraryUsageDescription": "EcoSearch needs access to your photo library so you can select images to run OCR.",
         "ITSAppUsesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.anonymous.ecosearch-mobile"
+      "bundleIdentifier": "org.name.EcoSearchMobile"
     },
     "android": {
       "permissions": [
