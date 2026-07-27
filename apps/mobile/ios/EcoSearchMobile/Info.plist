@@ -28,7 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>ecosearch</string>
-          <string>com.anonymous.ecosearch-mobile</string>
+          <string>org.name.EcoSearchMobile</string>
         </array>
       </dict>
       <dict>

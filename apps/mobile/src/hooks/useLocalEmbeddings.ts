@@ -1,3 +1,5 @@
+// /apps/mobile/src/hooks/useLocalEmbeddings.ts
+
 // React hook to manage local embeddings state in EcoSearch Mobile.
 // Handles model readiness, embedding computation, query similarity, and persistence.
 

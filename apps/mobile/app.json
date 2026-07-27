@@ -38,7 +38,8 @@
           }
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      "expo-asset"
     ]
   }
 }
