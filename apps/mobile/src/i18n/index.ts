@@ -1,4 +1,4 @@
-// /New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/src/i18n/index.ts
+// /apps/mobile/src/i18n/index.ts
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -17,7 +17,7 @@ const resources = {
         scanPdf: "Scan"
       },
       app: {
-        title: "EcoSearch Mobile",
+        title: "ParancU",
         apiBase: "API"
       },
       settings: {
@@ -237,7 +237,7 @@ const resources = {
         scanPdf: "Scansiona"
       },
       app: {
-        title: "EcoSearch Mobile",
+        title: "ParancU",
         apiBase: "API"
       },
       settings: {

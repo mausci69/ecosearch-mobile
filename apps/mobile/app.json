@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "EcoSearch Mobile",
+    "name": "ParancU",
     "slug": "ecosearch-mobile",
     "icon": "./assets/icon.png",
     "scheme": "ecosearch",
@@ -9,8 +9,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSCameraUsageDescription": "EcoSearch needs camera access to take photos of documents for OCR.",
-        "NSPhotoLibraryUsageDescription": "EcoSearch needs access to your photo library so you can select images to run OCR.",
+        "NSCameraUsageDescription": "ParancU needs camera access to take photos of documents for OCR.",
+        "NSPhotoLibraryUsageDescription": "ParancU needs access to your photo library so you can select images to run OCR.",
         "ITSAppUsesNonExemptEncryption": false
       },
       "bundleIdentifier": "org.name.EcoSearchMobile"

@@ -1,4 +1,4 @@
-// /New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/src/lib/api.ts
+// /apps/mobile/src/lib/api.ts
 
 import { postJSON, getJSON, apiUrl } from "./client";
 import { prepareCorpusLocal } from "../local/prepareCorpus";
@@ -284,7 +284,7 @@ export async function prepareCorpusFromText(
     return {
       ready: false,
       status: "error",
-      message: `Corpus too short. EcoSearch needs at least 4 sentences to prepare a reliable corpus. Found ${sentenceCount}.`,
+      message: `Corpus too short. ParancU needs at least 4 sentences to prepare a reliable corpus. Found ${sentenceCount}.`,
       chunks: 0,
       index_size: 0,
     };

@@ -1,4 +1,4 @@
-// New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/App.tsx
+// /apps/mobile/App.tsx
 
 import React, { useEffect, useMemo, useState } from "react";
 import {
@@ -447,7 +447,7 @@ export default function App() {
       await saveOpenAIKey(key);
       await refreshOpenAIKeyState();
 
-      Alert.alert("OpenAI key saved", "EcoSearch can now prepare corpora.");
+      Alert.alert("OpenAI key saved", "ParancU can now prepare corpora.");
     } catch (e: any) {
       const msg = e?.message || "Could not save OpenAI key.";
 
@@ -461,7 +461,7 @@ export default function App() {
   async function onClearOpenAIKey() {
     Alert.alert(
       "Remove OpenAI key?",
-      "EcoSearch will no longer be able to prepare new corpora until you add a key again.",
+      "ParancU will no longer be able to prepare new corpora until you add a key again.",
       [
         {
           text: "Cancel",
@@ -675,7 +675,7 @@ export default function App() {
         );
 
       if (!isValidCorpus) {
-        throw new Error("This JSON file is not a valid EcoSearch corpus.");
+        throw new Error("This JSON file is not a valid ParancU corpus.");
       }
 
       const defaultName =
@@ -755,7 +755,7 @@ export default function App() {
 
       await Sharing.shareAsync(fileUri, {
         mimeType: "application/json",
-        dialogTitle: "Export EcoSearch corpus",
+        dialogTitle: "Export ParancU corpus",
         UTI: "public.json",
       });
 
@@ -873,7 +873,7 @@ export default function App() {
 
         <View style={styles.headerRow}>
           <Text style={styles.title}>
-            {t("app.title", "EcoSearch Mobile")}
+            {t("app.title", "ParancU")}
           </Text>
 
           <TouchableOpacity
