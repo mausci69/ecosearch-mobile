@@ -1,21 +1,20 @@
-// /New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/src/lib/gen/openaiPrepare.ts
+// /apps/mobile/src/lib/gen/openaiPrepare.ts
 
 // British English comments.
-// Direct mobile-side OpenAI enrichment for EcoSearch v1 preparation.
+// Direct mobile-side OpenAI metadata enrichment for EcoSearch v1 preparation.
 // The API key is loaded from local device storage, after the user provides it.
 // Flow:
 // chunk -> grounded summary + grounded guiding question + answer focus
-// -> guiding question embedding + answer focus embedding
+// -> local guiding question embedding + local answer focus embedding
 
 import type { Chunk, PrepareResult } from "../../local/prepareCorpus";
 import { loadOpenAIKey } from "../../local/openaiKeyStore";
+import { embedMany } from "../embeddings";
 
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
-const OPENAI_EMBEDDINGS_URL = "https://api.openai.com/v1/embeddings";
 
-const OPENAI_MODEL = process.env.EXPO_PUBLIC_OPENAI_MODEL ?? "gpt-5.4-mini";
-const OPENAI_EMBEDDING_MODEL =
-  process.env.EXPO_PUBLIC_OPENAI_EMBEDDING_MODEL ?? "text-embedding-3-small";
+const OPENAI_MODEL =
+  process.env.EXPO_PUBLIC_OPENAI_MODEL ?? "gpt-5.4-mini";
 
 export type CorpusLanguage = "en" | "it";
 
@@ -35,7 +34,6 @@ type ChunkMetadata = {
 };
 
 console.log("OPENAI MODEL:", OPENAI_MODEL);
-console.log("OPENAI EMBEDDING MODEL:", OPENAI_EMBEDDING_MODEL);
 
 async function getOpenAIKey(): Promise<string> {
   const key = await loadOpenAIKey();
@@ -50,7 +48,10 @@ async function getOpenAIKey(): Promise<string> {
 }
 
 function extractTextFromResponse(payload: any): string {
-  if (typeof payload?.output_text === "string" && payload.output_text.trim()) {
+  if (
+    typeof payload?.output_text === "string" &&
+    payload.output_text.trim()
+  ) {
     return payload.output_text.trim();
   }
 
@@ -58,11 +59,16 @@ function extractTextFromResponse(payload: any): string {
 
   if (Array.isArray(payload?.output)) {
     for (const item of payload.output) {
-      if (!Array.isArray(item?.content)) continue;
+      if (!Array.isArray(item?.content)) {
+        continue;
+      }
 
-      for (const c of item.content) {
-        if (typeof c?.text === "string" && c.text.trim()) {
-          parts.push(c.text.trim());
+      for (const content of item.content) {
+        if (
+          typeof content?.text === "string" &&
+          content.text.trim()
+        ) {
+          parts.push(content.text.trim());
         }
       }
     }
@@ -79,25 +85,46 @@ function cleanOneLine(value: string): string {
     .trim();
 }
 
-function limitGuidingQuestionWords(value: string, maxWords = 10): string {
+function limitGuidingQuestionWords(
+  value: string,
+  maxWords = 10
+): string {
   const clean = cleanOneLine(value);
   const words = clean.split(/\s+/).filter(Boolean);
 
-  if (words.length <= maxWords) return clean;
+  if (words.length <= maxWords) {
+    return clean;
+  }
 
-  return words.slice(0, maxWords).join(" ").replace(/[,.!?;:]+$/, "") + "?";
+  return (
+    words
+      .slice(0, maxWords)
+      .join(" ")
+      .replace(/[,.!?;:]+$/, "") + "?"
+  );
 }
 
-function limitAnswerFocus(value: string, maxCharacters = 120): string {
+function limitAnswerFocus(
+  value: string,
+  maxCharacters = 120
+): string {
   const clean = cleanOneLine(value).replace(/[.?!;:]+$/, "");
 
-  if (clean.length <= maxCharacters) return clean;
+  if (clean.length <= maxCharacters) {
+    return clean;
+  }
 
-  return clean.slice(0, maxCharacters).replace(/\s+\S*$/, "").trim();
+  return clean
+    .slice(0, maxCharacters)
+    .replace(/\s+\S*$/, "")
+    .trim();
 }
 
-function buildLanguageInstruction(corpusLanguage: CorpusLanguage): string {
-  const languageLabel = CORPUS_LANGUAGE_LABELS[corpusLanguage];
+function buildLanguageInstruction(
+  corpusLanguage: CorpusLanguage
+): string {
+  const languageLabel =
+    CORPUS_LANGUAGE_LABELS[corpusLanguage];
 
   return [
     `The selected corpus language is ${languageLabel}.`,
@@ -107,7 +134,9 @@ function buildLanguageInstruction(corpusLanguage: CorpusLanguage): string {
   ].join("\n");
 }
 
-function buildFallbackQuestion(corpusLanguage: CorpusLanguage): string {
+function buildFallbackQuestion(
+  corpusLanguage: CorpusLanguage
+): string {
   if (corpusLanguage === "it") {
     return "Qual è l'informazione principale del passaggio?";
   }
@@ -115,7 +144,9 @@ function buildFallbackQuestion(corpusLanguage: CorpusLanguage): string {
   return "What is the main information in the passage?";
 }
 
-function buildFallbackAnswerFocus(corpusLanguage: CorpusLanguage): string {
+function buildFallbackAnswerFocus(
+  corpusLanguage: CorpusLanguage
+): string {
   if (corpusLanguage === "it") {
     return "informazione principale del passaggio";
   }
@@ -131,8 +162,11 @@ function parseChunkMetadata(
 
   const fallback: ChunkMetadata = {
     summary: fallbackSummary,
-    guidingQuestion: buildFallbackQuestion(corpusLanguage),
-    answerFocus: fallbackSummary || buildFallbackAnswerFocus(corpusLanguage),
+    guidingQuestion:
+      buildFallbackQuestion(corpusLanguage),
+    answerFocus:
+      fallbackSummary ||
+      buildFallbackAnswerFocus(corpusLanguage),
   };
 
   try {
@@ -145,12 +179,21 @@ function parseChunkMetadata(
     const parsed = JSON.parse(cleaned);
 
     const summary = cleanOneLine(parsed?.summary);
-    const guidingQuestion = limitGuidingQuestionWords(
-      cleanOneLine(parsed?.guiding_question)
-    );
-    const answerFocus = limitAnswerFocus(cleanOneLine(parsed?.answer_focus));
 
-    if (!summary || !guidingQuestion || !answerFocus) {
+    const guidingQuestion =
+      limitGuidingQuestionWords(
+        cleanOneLine(parsed?.guiding_question)
+      );
+
+    const answerFocus = limitAnswerFocus(
+      cleanOneLine(parsed?.answer_focus)
+    );
+
+    if (
+      !summary ||
+      !guidingQuestion ||
+      !answerFocus
+    ) {
       return fallback;
     }
 
@@ -171,77 +214,59 @@ async function callOpenAIText(
 ): Promise<string> {
   const apiKey = await getOpenAIKey();
 
-  const res = await fetch(OPENAI_RESPONSES_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: OPENAI_MODEL,
-      input: [
-        {
-          role: "system",
-          content: [{ type: "input_text", text: system }],
-        },
-        {
-          role: "user",
-          content: [{ type: "input_text", text: user }],
-        },
-      ],
-    }),
-  });
+  const response = await fetch(
+    OPENAI_RESPONSES_URL,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: OPENAI_MODEL,
+        input: [
+          {
+            role: "system",
+            content: [
+              {
+                type: "input_text",
+                text: system,
+              },
+            ],
+          },
+          {
+            role: "user",
+            content: [
+              {
+                type: "input_text",
+                text: user,
+              },
+            ],
+          },
+        ],
+      }),
+    }
+  );
 
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`${errorLabel}: HTTP ${res.status} ${errText}`);
+  if (!response.ok) {
+    const errorText = await response.text();
+
+    throw new Error(
+      `${errorLabel}: HTTP ${response.status} ${errorText}`
+    );
   }
 
-  const payload = await res.json();
+  const payload = await response.json();
+
   return extractTextFromResponse(payload);
-}
-
-async function embedText(text: string): Promise<number[]> {
-  const cleanText = String(text || "").trim();
-
-  if (!cleanText) return [];
-
-  const apiKey = await getOpenAIKey();
-
-  const res = await fetch(OPENAI_EMBEDDINGS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: OPENAI_EMBEDDING_MODEL,
-      input: cleanText,
-    }),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`OpenAI embedding failed: HTTP ${res.status} ${errText}`);
-  }
-
-  const payload = await res.json();
-  const embedding = payload?.data?.[0]?.embedding;
-
-  if (!Array.isArray(embedding)) {
-    throw new Error("OpenAI embedding failed: missing embedding vector.");
-  }
-
-  return embedding
-    .map((x: any) => Number(x))
-    .filter((x: number) => Number.isFinite(x));
 }
 
 async function generateChunkMetadata(
   chunkText: string,
   corpusLanguage: CorpusLanguage
 ): Promise<ChunkMetadata> {
-  const languageInstruction = buildLanguageInstruction(corpusLanguage);
+  const languageInstruction =
+    buildLanguageInstruction(corpusLanguage);
 
   const system = [
     "You prepare retrieval metadata for an answerability-first search system.",
@@ -307,7 +332,10 @@ async function generateChunkMetadata(
     "OpenAI chunk metadata generation failed"
   );
 
-  return parseChunkMetadata(text, corpusLanguage);
+  return parseChunkMetadata(
+    text,
+    corpusLanguage
+  );
 }
 
 export async function enrichPreparedCorpusWithOpenAI(
@@ -315,20 +343,36 @@ export async function enrichPreparedCorpusWithOpenAI(
   options: EnrichPreparedCorpusOptions = {}
 ): Promise<PrepareResult> {
   const enrichedChunks: Chunk[] = [];
-  const corpusLanguage = options.corpusLanguage ?? "en";
+
+  const corpusLanguage =
+    options.corpusLanguage ?? "en";
 
   console.log("[CORPUS LANGUAGE SELECTED]", {
     corpusLanguage,
-    label: CORPUS_LANGUAGE_LABELS[corpusLanguage],
+    label:
+      CORPUS_LANGUAGE_LABELS[corpusLanguage],
   });
 
   for (const chunk of prepared.chunks) {
-    const metadata = await generateChunkMetadata(chunk.text, corpusLanguage);
+    const metadata =
+      await generateChunkMetadata(
+        chunk.text,
+        corpusLanguage
+      );
+
     const summary = metadata.summary;
-    const guidingQuestion = metadata.guidingQuestion;
-    const answerFocus = metadata.answerFocus;
-    const guidingQuestionEmbedding = await embedText(guidingQuestion);
-    const answerFocusEmbedding = await embedText(answerFocus);
+    const guidingQuestion =
+      metadata.guidingQuestion;
+    const answerFocus =
+      metadata.answerFocus;
+
+    const [
+      guidingQuestionEmbedding,
+      answerFocusEmbedding,
+    ] = await embedMany([
+      guidingQuestion,
+      answerFocus,
+    ]);
 
     console.log("[PREPARED CHUNK]", {
       chunkId: chunk.id,
@@ -336,18 +380,30 @@ export async function enrichPreparedCorpusWithOpenAI(
       summary,
       guidingQuestion,
       answerFocus,
-      guidingQuestionWords: guidingQuestion.split(/\s+/).filter(Boolean).length,
-      hasGuidingQuestionEmbedding: guidingQuestionEmbedding.length > 0,
-      hasAnswerFocusEmbedding: answerFocusEmbedding.length > 0,
+      guidingQuestionWords:
+        guidingQuestion
+          .split(/\s+/)
+          .filter(Boolean)
+          .length,
+      hasGuidingQuestionEmbedding:
+        guidingQuestionEmbedding.length > 0,
+      hasAnswerFocusEmbedding:
+        answerFocusEmbedding.length > 0,
+      embeddingEngine:
+        "local-multilingual-e5-small-onnx",
     });
 
     enrichedChunks.push({
       ...chunk,
       summary,
-      guiding_question: guidingQuestion,
-      guiding_question_embedding: guidingQuestionEmbedding,
-      answer_focus: answerFocus,
-      answer_focus_embedding: answerFocusEmbedding,
+      guiding_question:
+        guidingQuestion,
+      guiding_question_embedding:
+        guidingQuestionEmbedding,
+      answer_focus:
+        answerFocus,
+      answer_focus_embedding:
+        answerFocusEmbedding,
     } as Chunk);
   }
 

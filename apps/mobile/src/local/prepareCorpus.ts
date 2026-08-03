@@ -1,6 +1,5 @@
-// /New_EcoSearch/EcoSearch_v1_mobile_llm/apps/mobile/src/local/prepareCorpus.ts
+// /apps/mobile/src/local/prepareCorpus.ts
 
-// British English comments.
 // v1-shaped local preparation primitives:
 // - Deterministic sentence splitter
 // - Overlapping sentence chunker
