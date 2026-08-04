@@ -497,27 +497,29 @@ export default function MultiPageScan({
         </View>
       )}
 
-      <View style={ui.actionRow}>
-        <TouchableOpacity
-          onPress={onPrimaryAction}
-          style={[
-            styles.button,
-            ui.actionButton,
-            primaryActionDisabled && styles.buttonDisabled,
-          ]}
-          disabled={primaryActionDisabled}
-        >
-          {anyBusy ? (
-            <ActivityIndicator />
-          ) : (
-            <Text style={[styles.buttonText, ui.actionButtonText]}>
-              {hasExtractedText
-                ? t("scan.prepareCorpus", "Prepare Corpus")
-                : t("scan.runOcr", "Run OCR")}
-            </Text>
-          )}
-        </TouchableOpacity>
-      </View>
+      {assets.length > 0 && (
+        <View style={ui.actionRow}>
+          <TouchableOpacity
+            onPress={onPrimaryAction}
+            style={[
+              styles.button,
+              ui.actionButton,
+              primaryActionDisabled && styles.buttonDisabled,
+            ]}
+            disabled={primaryActionDisabled}
+          >
+            {anyBusy ? (
+              <ActivityIndicator />
+            ) : (
+              <Text style={[styles.buttonText, ui.actionButtonText]}>
+                {hasExtractedText
+                  ? t("scan.prepareCorpus", "Prepare Corpus")
+                  : t("scan.runOcr", "Run OCR")}
+              </Text>
+            )}
+          </TouchableOpacity>
+        </View>
+      )}
 
       {!!prepMsg && <Text style={styles.muted}>{prepMsg}</Text>}
     </View>
