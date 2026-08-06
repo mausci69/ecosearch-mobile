@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "infoPlist": {
         "NSCameraUsageDescription": "ParancU needs camera access to take photos of documents for OCR.",
         "NSPhotoLibraryUsageDescription": "ParancU needs access to your photo library so you can select images to run OCR.",
